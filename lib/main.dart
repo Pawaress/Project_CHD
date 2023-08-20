@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_chd/Assessment_page.dart';
+import 'package:project_chd/Assessment_page_V2.dart';
 import 'package:project_chd/Before_chatbot_page.dart';
 import 'package:project_chd/Call_1669_page.dart';
 import 'package:project_chd/Chat_bot_page.dart';
@@ -88,33 +89,26 @@ class _MyHomePageState extends State<MyHomePage> {
           'All Page In Here !!!',
         ),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsetsDirectional.all(30),
+          padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
           child: Column(children: [
-            Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0)),
+            Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0)),
             Row(
-              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Text Inter",
-                  style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.bold,
-                  ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => A_Pa_V2(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('Assessment_page_V2'),
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Text not Inter",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
               ],
             ),
             Row(

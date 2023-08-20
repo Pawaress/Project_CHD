@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_chd/Assessment_page.dart';
+import 'package:project_chd/Assessment_page_V2.dart';
 
 class B_As extends StatefulWidget {
   @override
@@ -49,7 +50,9 @@ class _B_AsState extends State<B_As> {
         ),
       ),
       body: Container(
+        color: Color(0XFFFFEEDD),
         child: Container(
+          color: Color(0XFFFFEEDD),
           padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
           margin: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 30),
           child: Column(
@@ -115,7 +118,7 @@ class _B_AsState extends State<B_As> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 45, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -136,7 +139,7 @@ class _B_AsState extends State<B_As> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => A_Pa(),
+                            builder: (context) => A_Pa_V2(),
                           ),
                         );
                       },

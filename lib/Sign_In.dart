@@ -255,45 +255,10 @@ class _S_InState extends State<S_In> {
                                                           width: 270,
                                                           child: TextFormField(
                                                             validator: (value) {
-                                                              if (value ==
-                                                                      null ||
-                                                                  value
-                                                                      .isEmpty) {
-                                                                setState(() {
-                                                                  checkErrorEditUsername =
-                                                                      true;
-                                                                  textErrorUsername =
-                                                                      '* กรุณากรอกอีเมลของท่าน';
-                                                                  textEditingControllerUsername
-                                                                      .clear();
-                                                                });
-
-                                                                print(
-                                                                    'checkErrorEditUsername = $checkErrorEditUsername');
-                                                              } else if (!value
-                                                                      .contains(
-                                                                          '@') ||
-                                                                  !value
-                                                                      .contains(
-                                                                          '.')) {
-                                                                setState(() {
-                                                                  checkErrorEditUsername =
-                                                                      true;
-                                                                  textErrorUsername =
-                                                                      '* กรุณากรอกอีเมลในรูปแบบที่ถูกต้อง';
-                                                                  textEditingControllerUsername
-                                                                      .clear();
-                                                                });
-                                                              } else {
-                                                                setState(() {
-                                                                  checkErrorEditUsername =
-                                                                      false;
-                                                                });
-
-                                                                print(
-                                                                    'checkErrorEditUsername = $checkErrorEditUsername');
-                                                              }
-                                                              return null;
+                                                              //ตัวแปร value คือ ค่าที่ input เข้ามาอยากใช้ input(ของแมน) ให้ value = input ส่วนของอีเมลนะ ***
+                                                              //ใส่บรรทัดข้างล่างนี้เลย ใส่ input บรรณทัด 261
+                                                              value =
+                                                                  'Inputของแมน ส่วนของอีเมล';
                                                             },
                                                             controller:
                                                                 textEditingControllerUsername,
@@ -321,7 +286,7 @@ class _S_InState extends State<S_In> {
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 1, 0, 3),
+                                                    .fromSTEB(0, 0, 0, 3),
                                                 child: Column(
                                                   children: [
                                                     Row(
@@ -381,33 +346,10 @@ class _S_InState extends State<S_In> {
                                                           width: 270,
                                                           child: TextFormField(
                                                             validator: (value) {
-                                                              if (value ==
-                                                                      null ||
-                                                                  value
-                                                                      .isEmpty) {
-                                                                setState(() {
-                                                                  checkErrorEditPassword =
-                                                                      true;
-                                                                  textErrorPassword =
-                                                                      '* กรุณากรอกพาสเวิร์ด';
-                                                                  textEditingControllerPassword
-                                                                      .clear();
-                                                                });
-
-                                                                print(
-                                                                    'checkErrorEditPassword = $checkErrorEditPassword');
-                                                              } else {
-                                                                setState(() {
-                                                                  checkErrorEditPassword =
-                                                                      false;
-                                                                  textErrorPassword =
-                                                                      '';
-                                                                });
-
-                                                                print(
-                                                                    'checkErrorEditPassword = $checkErrorEditPassword');
-                                                              }
-                                                              return null;
+                                                              //ตัวแปร value คือ ค่าที่ input เข้ามาอยากใช้ input(ของแมน) ให้ value = input ส่วนของรหัสนะ ***
+                                                              //ใส่บรรทัดข้างล่างนี้เลย ใส่ input บรรณทัด 352
+                                                              value =
+                                                                  'Inputของแมน ส่วนของรหัส';
                                                             },
                                                             obscureText:
                                                                 checkEditPassword,
