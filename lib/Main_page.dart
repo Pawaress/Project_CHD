@@ -145,7 +145,7 @@ class _M_PaState extends State<M_Pa> {
                                       ),
                                     ),
                                     Text(
-                                      "40%",
+                                      "40%", //ใส่ต่าตวามเสี่ยงตรงนี้(ต้องเป็น stringนะ)
                                       style: TextStyle(
                                           color: Color.fromARGB(255, 255, 0, 0),
                                           fontSize: 45,
@@ -583,6 +583,7 @@ class _M_PaState extends State<M_Pa> {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) => B_As(),
+                                                //ลิ้งไปหน้าก่อนแบบประเมิน
                                               ),
                                             );
                                           },
@@ -666,6 +667,7 @@ class _M_PaState extends State<M_Pa> {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) => B_Ch(),
+                                                //ลิ้งไปหน้าคำแนะนำก่อนแชทบอท
                                               ),
                                             );
                                           },

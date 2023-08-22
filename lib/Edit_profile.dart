@@ -1,37 +1,26 @@
 import 'package:project_chd/Main_page.dart';
 import 'package:flutter/material.dart';
 
-import 'dart:io';
-
 class E_Po extends StatefulWidget {
   @override
   _E_PoState createState() => _E_PoState();
 }
 
 class _E_PoState extends State<E_Po> {
+  //ค่าเอาไว้เช็ค ค่าว่าพิมได้หรือไม่ ใน textfield ---------------
   bool checkEditUsername = true;
-  bool checkErrorEditUsername = false;
-  Color colorErrorUsename = Color(0xFFD9D9D9);
-  String textErrorUsername = 'username';
-  //-----------------------
+  //ค่า checkEditUsername มีไว้เช็ค ให้สามารถพิมพ์ข้อความใน textfield ได้หรือไม่ในส่วนของ username ถ้า ture พิมไม่ได้ false พิมไม่ได้
   bool checkEditPassword = true;
-  bool checkErrorEditPassword = false;
-  Color colorErrorPassword = Color(0xFFD9D9D9);
-  String textErrorPassword = 'Password';
-  //----------------
+  //ค่า checkEditPassword มีไว้เช็ค ให้สามารถพิมพ์ข้อความใน textfield ได้หรือไม่ในส่วนของ password ถ้า ture พิมไม่ได้ false พิมไม่ได้
   bool checkEditEmail = true;
-  bool checkErrorEditEmail = false;
+  //ค่า checkEditEmail มีไว้เช็ค ให้สามารถพิมพ์ข้อความใน textfield ได้หรือไม่ในส่วนของ email ถ้า ture พิมไม่ได้ false พิมไม่ได้
+
+//ตัวแปร textController ของ textfield ไว้สำหรับ รับค่าที่ user ใส่เข้ามา
+// ++ เวลาแทนค่าของ textController จะทำได้ เช่น textEditingControllerUsername.text = ค่า String ;
   TextEditingController textEditingControllerUsername = TextEditingController();
   TextEditingController textEditingControllerEmail = TextEditingController();
   TextEditingController textEditingControllerPassword = TextEditingController();
-  List<bool> _Selectage = List.generate(3, (_) => false);
-  List<bool> _Selectgender = List.generate(2, (_) => false);
-  int gender = 0;
-  int age = 1;
-  bool Diabetes = false;
-  bool Stroke = false;
-  bool Obesity = false;
-  bool Hypertension = false;
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -135,9 +124,10 @@ class _E_PoState extends State<E_Po> {
                                                   width: 200,
                                                   child: TextFormField(
                                                     validator: (value) {},
-                                                    readOnly: checkEditUsername,
+                                                    readOnly:
+                                                        checkEditUsername, //ส่วนเช็คว่าพิมได้หรือไม่
                                                     controller:
-                                                        textEditingControllerUsername,
+                                                        textEditingControllerUsername, //ส่วนที่ไว้รับค่าจากuser
                                                     decoration: InputDecoration(
                                                         border:
                                                             InputBorder.none,
@@ -148,6 +138,7 @@ class _E_PoState extends State<E_Po> {
                                                           color: Colors.black,
                                                           onPressed: () {
                                                             setState(() {
+                                                              //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
                                                               checkEditUsername =
                                                                   !checkEditUsername;
                                                             });
@@ -199,19 +190,24 @@ class _E_PoState extends State<E_Po> {
                                                   width: 200,
                                                   child: TextFormField(
                                                     validator: (value) {},
-                                                    readOnly: checkEditEmail,
+                                                    readOnly:
+                                                        checkEditEmail, //ส่วนเช็คว่าพิมได้หรือไม่
+
                                                     controller:
-                                                        textEditingControllerEmail,
+                                                        textEditingControllerEmail, //ส่วนที่ไว้รับค่าจากuser
                                                     decoration: InputDecoration(
                                                         border:
                                                             InputBorder.none,
-                                                        hintText: "ชิมมินกยู",
+                                                        hintText:
+                                                            "ชิมมินกยู", //ค่า Email ปัจุบันก่อนแก้ไข
                                                         suffixIcon: IconButton(
                                                           icon:
                                                               Icon(Icons.edit),
                                                           color: Colors.black,
                                                           onPressed: () {
                                                             setState(() {
+                                                              //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+
                                                               checkEditEmail =
                                                                   !checkEditEmail;
                                                             });
@@ -263,24 +259,27 @@ class _E_PoState extends State<E_Po> {
                                                   width: 200,
                                                   child: TextFormField(
                                                     validator: (value) {},
-                                                    readOnly: checkEditPassword,
+                                                    readOnly:
+                                                        checkEditPassword, //ส่วนเช็คว่าพิมได้หรือไม่
                                                     obscureText:
-                                                        checkEditPassword,
+                                                        checkEditPassword, //เป็นส่วนไว้สำหรับปิดรหัส
                                                     controller:
-                                                        textEditingControllerPassword,
+                                                        textEditingControllerPassword, //ส่วนที่ไว้รับค่าจากuser
                                                     decoration: InputDecoration(
                                                         border:
                                                             InputBorder.none,
                                                         hintText:
+                                                            //เงื่อนไขเช็ค เมื่อเปิดหน้านี้มา จะแสดง เป็น **** ก่อน เมื่อกดIcon edit จะเป็นคำว่าpasswod
                                                             checkEditPassword
                                                                 ? '********'
-                                                                : 'Password',
+                                                                : 'Password', //ค่า password ปัจุบันก่อนแก้ไข
                                                         suffixIcon: IconButton(
                                                           icon:
                                                               Icon(Icons.edit),
                                                           color: Colors.black,
                                                           onPressed: () {
                                                             setState(() {
+                                                              //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
                                                               checkEditPassword =
                                                                   !checkEditPassword;
                                                             });
@@ -313,7 +312,7 @@ class _E_PoState extends State<E_Po> {
                                               context,
                                               MaterialPageRoute(
                                                 builder: (context) => M_Pa(),
-                                                //ตรงนี้ส่วนของลิ้งไปหน้าหลัก
+                                                //ลิ้งไปหน้า home page
                                               ),
                                             );
                                           }
@@ -339,6 +338,7 @@ class _E_PoState extends State<E_Po> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) => M_Pa(),
+                                              //ลิ้งไปหน้า home page
                                             ),
                                           );
                                         },

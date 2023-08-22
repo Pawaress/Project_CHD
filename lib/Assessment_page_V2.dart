@@ -13,10 +13,10 @@ enum SingingCharacter { lafayette, jefferson }
 class _A_Pa_V2State extends State<A_Pa_V2> {
   //ค่าที่ได้จากตัวแปรใช้จริง จะอยู่ส่วนของท้ายๆโค้ด
   //ตัวแปรไว้รับค่า wiget ต่าง --------
-  //set ค่า ตรง textfleid ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
+  //set ค่า TextController ของ textfield ส่วนของ อายุ ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
   TextEditingController textEditingControllerAge =
       TextEditingController(text: '0');
-  //set ค่า ตรง textfleid ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
+  //set ค่า TextController ของ textfield ส่วนของ ประวิการสูบบุหรี่ต่อวัน ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
   TextEditingController textEditingControllerSmokeperday =
       TextEditingController(text: '0');
 
