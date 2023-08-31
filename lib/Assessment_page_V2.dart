@@ -11,8 +11,12 @@ class A_Pa_V2 extends StatefulWidget {
 enum SingingCharacter { lafayette, jefferson }
 
 class _A_Pa_V2State extends State<A_Pa_V2> {
+  /*
+    ***กล่องที่ให้เพิ่มมา 2 อัน กล่องที่ 1 อยู่ในบรรณทัด 897 ถึง 1286 , กล่องที่ 2 อยู่ในบรรณทัด 1303 ถึง 1690
+    ส่วนตัวแปรที่สามารถเก็บไปใช้ต่อ อยู่ บรรณทัด 1732 ถึง 1736 
+   */
   //ค่าที่ได้จากตัวแปรใช้จริง จะอยู่ส่วนของท้ายๆโค้ด
-  //ตัวแปรไว้รับค่า wiget ต่าง --------
+  //ตัวแปรไว้รับค่า wiget ต่างๆ ---------------------------------------------------------------------------------
   //set ค่า TextController ของ textfield ส่วนของ อายุ ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
   TextEditingController textEditingControllerAge =
       TextEditingController(text: '0');
@@ -20,30 +24,85 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
   TextEditingController textEditingControllerSmokeperday =
       TextEditingController(text: '0');
 
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )-----------------
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ textEditingControllerSmokeperday ****
+  TextEditingController textEditingControllerSmokeperdayBox1 =
+      TextEditingController(text: '0');
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ textEditingControllerSmokeperday ****
+  TextEditingController textEditingControllerSmokeperdayBox2 =
+      TextEditingController(text: '0');
+  // -------------------------------------------------
+
   //set ค่า ให้ปุ่ม ToggleButtons ที่มี 2 ปุ่มอันแรก ให้แสดงแบบกด(true)  แล้วอันที่สองคือแสดงแบบยังไม่กด(false)
   List<bool> _Selectgender = <bool>[true, false];
   //set ค่า ให้ปุ่ม ToggleButtons ที่มี 2 ปุ่มอันแรก ให้แสดงแบบกด(true)  แล้วอันที่สองคือแสดงแบบยังไม่กด(false)
   List<bool> _SelectgenSmoke = <bool>[true, false];
+
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ _SelectgenSmoke ****
+  List<bool> _SelectgenSmokeBox1 = <bool>[true, false];
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ _SelectgenSmoke ****
+  List<bool> _SelectgenSmokeBox2 = <bool>[true, false];
+  //-----------------------------------------
+
   //set ageslider เป็น double เพื่อรับค่า จาก slider (sliderมันรับเฉพาะDoubleเท่านั้น)
   double ageslider = 1.0;
   //set smokeperdayslider เป็น double เพื่อรับค่า จาก slider (sliderมันรับเฉพาะDoubleเท่านั้น)
   double smokeperdayslider = 1.0;
-  //ตัวแปรใช้จริง ข้างล่าง -------------
+
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ smokeperdayslider ****
+  double smokeperdaysliderBox1 = 1.0;
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ smokeperdayslider ****
+  double smokeperdaysliderBox2 = 1.0;
+  //----------------------------------------------------------------------------------------------------------
+
+  //ตัวแปรใช้จริง ข้างล่าง ***ค่าที่จะใช้จริงจะอยู่ส่วนปุ่มอันท้ายสุดของ code ------------------------------------------------------------------
   //ตัวแปรนี้มีไว้เก็บค่า อายุ ตามค่า slider ที่ เราเลื่อน หรือ เติมในtextfleid
   int age = 0;
-  //ตัวแปรนี้มีไว้เก็บค่า เพศ ชาย = 0 หญิง = 1 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 246 กับ 250
+  //ตัวแปรนี้มีไว้เก็บค่า เพศ ชาย = 0 หญิง = 1 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 324 กับ 328
   int gender = 0;
-  //ตัวแปรนี้มีไว้เก็บค่า ประวัติการสูบบุหรี่ มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 684 กับ 688
+  //ตัวแปรนี้มีไว้เก็บค่า ประวัติการสูบบุหรี่ มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 764 กับ 768
   int smoke = 1;
+
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ smoke ****
+  int smokeBox1 = 1;
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ smoke ****
+  int smokeBox2 = 1;
+  //----------------------------------------
+
   //ตัวแปรนี้มีไว้เก็บค่า จำนวนการสุบบุหรี่ต่อวัน ตามค่า slider ที่ เราเลื่อน หรือ เติมใน textfleid
   int smokeperday = 0;
-  //ตัวแปรนี้มีไว้เก็บค่า ระกับการศึกษา จะมี 4 ค่าตามคือ 1 2 3 4 ของ radio ที่เราเลือก สามารถแก้ค่า ทั้ง 4 ได้ในบรรทัดตามลำดับดังนี้ 462 495 528 561
+
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ smokeperday ****
+  int smokeperdayBox1 = 0;
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ smokeperday ****
+  int smokeperdayBox2 = 0;
+  //----------------------------------------
+
+  //ตัวแปรนี้มีไว้เก็บค่า ระกับการศึกษา จะมี 4 ค่าตามคือ 1 2 3 4 ของ radio ที่เราเลือก สามารถแก้ค่า ทั้ง 4 ได้ในบรรทัดตามลำดับดังนี้ 542 575 608 641
   int EducationLevel = 0;
+
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ EducationLevel ****
+  int EducationLevelBox1 = 0;
+  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ EducationLevel ****
+  int EducationLevelBox2 = 0;
+  //----------------------------------------
+
+  //---------------------------------------------------------------------------------------------------------------------------
   @override
   void initState() {
     //function มีไว้ set EducationLevel = 1; เมื่อเริ่ม มันจะอยู่ช้อย radio ที่ 1 ก่อน
     super.initState();
+
     EducationLevel = 1;
+    // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+    EducationLevelBox1 = 1;
+    EducationLevelBox2 = 1;
+    //----------------------------------------
   }
 
   setEducationLevel(int val) {
@@ -52,6 +111,22 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
       EducationLevel = val;
     });
   }
+
+  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
+  setEducationLevelBox1(int val) {
+    //function มีไว้ อัพเดทค่า EducationLevelBox1
+    setState(() {
+      EducationLevelBox1 = val;
+    });
+  }
+
+  setEducationLevelBox2(int val) {
+    //function มีไว้ อัพเดทค่า EducationLevelBox2
+    setState(() {
+      EducationLevelBox2 = val;
+    });
+  }
+  //----------------------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -99,15 +174,15 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
         body: SingleChildScrollView(
           //color: Color(0XFFFFEEDD),
           child: Container(
-            color: Color(0XFFFFEEDD),
+            color: Color(0XFFF9CEA5),
             child: Container(
-              color: Color(0XFFFFEEDD),
+              color: Color(0XFFF9CEA5),
               margin: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 30),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(50, 0, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(25, 0, 0, 0),
                     child: Row(
                       children: [
                         Text(
@@ -123,7 +198,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
@@ -135,7 +210,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 20, 10, 10),
+                                      20, 20, 20, 10),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -143,10 +218,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 10, 0),
+                                            0, 0, 0, 0),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -170,6 +247,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                   'Kanit',
                                                               fontSize: 15),
                                                         ),
+                                                        Text("        "),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -260,7 +338,9 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                         .circular(
                                                                             20)),
                                                           ),
-                                                        )
+                                                        ),
+                                                        Text(
+                                                            "                   "),
                                                       ],
                                                     ),
                                                   ),
@@ -288,7 +368,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0, 0, 0, 0),
+                                                                  20, 0, 0, 0),
                                                       child: Row(
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
@@ -465,7 +545,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       //activeColor: Colors.green,
                                                       onChanged: (val) {
                                                         print(
-                                                            "EducationLevel $val");
+                                                            "EducationLevel = $val");
                                                         setEducationLevel(
                                                             int.parse(val
                                                                 .toString()));
@@ -498,7 +578,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       //activeColor: Colors.green,
                                                       onChanged: (val) {
                                                         print(
-                                                            "EducationLevel $val");
+                                                            "EducationLevel = $val");
                                                         setEducationLevel(
                                                             int.parse(val
                                                                 .toString()));
@@ -531,7 +611,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       //activeColor: Colors.green,
                                                       onChanged: (val) {
                                                         print(
-                                                            "EducationLevel $val");
+                                                            "EducationLevel = $val");
                                                         setEducationLevel(
                                                             int.parse(val
                                                                 .toString()));
@@ -564,7 +644,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       //activeColor: Colors.green,
                                                       onChanged: (val) {
                                                         print(
-                                                            "EducationLevel $val");
+                                                            "EducationLevel = $val");
                                                         setEducationLevel(
                                                             int.parse(val
                                                                 .toString()));
@@ -768,6 +848,817 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                         TextInputType.number,
                                                     decoration: InputDecoration(
                                                       hintText: "$smokeperday",
+                                                      border: InputBorder.none,
+
+                                                      //textEditingControllerAge
+                                                    ),
+                                                    // ค่าอื่น ๆ ของ TextField
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "มวนต่อวัน",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ]))
+                                ],
+                              ),
+                            )))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "ข้อมูลประวัติการแพทย์ (กล่องที่ 1)",
+                          style: TextStyle(
+                            color: Color(0XFF5A5959),
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    // เริ่ม กล่อง ที่ 1 ตรงนนี้นะ ****
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Card(
+                                child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 10, 10, 10),
+                              child: Column(
+                                children: [
+                                  //Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0,0, 0),)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          "ประวัติการศึกษา",
+                                          style: TextStyle(
+                                              fontFamily: 'Kanit',
+                                              fontSize: 15),
+                                        ),
+                                        Text(
+                                          "                                                                ",
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 1,
+                                                      groupValue:
+                                                          EducationLevelBox1,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox1 = $val");
+                                                        setEducationLevelBox1(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "ต่ำกว่าระดับมัธยมตอนต้น",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                     "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 2,
+                                                      groupValue:
+                                                          EducationLevelBox1,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox1 = $val");
+                                                        setEducationLevelBox1(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "ระดับมัธยมตอนปลาย",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                           "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 3,
+                                                      groupValue:
+                                                          EducationLevelBox1,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox1 = $val");
+                                                        setEducationLevelBox1(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "ระดับปริญญาตรี",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                                 "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 4,
+                                                      groupValue:
+                                                          EducationLevelBox1,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox1 = $val");
+                                                        setEducationLevelBox1(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "สูงกว่าระดับปริญญาตรี",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                        "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "ประวัติการสูบบุหรี่",
+                                              style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontSize: 15),
+                                            ),
+                                            Text(
+                                              "หมายเหตุ : ถ้าปัจจุบันเลิกสูบบุหรี่แล้วให้เลือก มี",
+                                              style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Color.fromARGB(
+                                                      255, 255, 17, 0),
+                                                  fontSize: 10),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(30, 0, 0, 0),
+                                              child: ToggleButtons(
+                                                constraints: BoxConstraints(
+                                                    maxWidth: 55,
+                                                    minWidth: 50,
+                                                    minHeight: 35,
+                                                    maxHeight: 35),
+                                                isSelected: _SelectgenSmokeBox1,
+                                                children: <Widget>[
+                                                  Container(
+                                                      width: 20,
+                                                      child: new Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: <Widget>[
+                                                          new Text(
+                                                            "มี",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.red,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 15),
+                                                          )
+                                                        ],
+                                                      )),
+                                                  Container(
+                                                      width: 25,
+                                                      child: new Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: <Widget>[
+                                                          new Text(
+                                                            "ไม่มี",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.blue,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 15),
+                                                          )
+                                                        ],
+                                                      )),
+                                                ],
+                                                onPressed: (int index) {
+                                                  setState(() {
+                                                    for (int i = 0;
+                                                        i <
+                                                            _SelectgenSmokeBox1
+                                                                .length;
+                                                        i++) {
+                                                      _SelectgenSmokeBox1[i] =
+                                                          i == index;
+                                                    }
+                                                    if (_SelectgenSmokeBox1[
+                                                        0]) {
+                                                      smokeBox1 = 1;
+                                                      print(
+                                                          "มีประวัติสูบบุหรี่Box1 = $smokeBox1");
+                                                    } else {
+                                                      smokeBox1 = 0;
+                                                      print(
+                                                          "ไม่มีมีประวัติสูบบุหรี่Box1 = $smokeBox1");
+                                                    }
+                                                  });
+                                                },
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                        Radius.circular(20)),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "ปริมาณบุหรี่ที่สูบต่อวัน",
+                                          style: TextStyle(
+                                              fontFamily: 'Kanit',
+                                              fontSize: 15),
+                                        ),
+                                        Text(
+                                            "                                                   ")
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 0),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Slider(
+                                                  value: smokeperdaysliderBox1,
+                                                  onChanged: (newRating) {
+                                                    setState(
+                                                      () => smokeperdaysliderBox1 =
+                                                          newRating, //รับค่าจากslider มาใน agelider
+                                                    );
+                                                    setState(() {
+                                                      smokeperdayBox1 =
+                                                          smokeperdaysliderBox1 //เปลี่ยน double เป็น integer เพื่ออะไปใช้ต่อ
+                                                              .floor();
+                                                    });
+                                                    setState(() {
+                                                      //รับค่าจาก slider มาใน textEditingController ของ textfleid เพื่อแสดงค่าปัจุบันให้ user เห็น
+                                                      textEditingControllerSmokeperdayBox1
+                                                              .text =
+                                                          (newRating.floor())
+                                                              .toString();
+                                                    });
+                                                  },
+                                                  min: 0,
+                                                  max: 100,
+                                                  divisions: 100,
+                                                  label: "$smokeperdayBox1",
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  width:
+                                                      27, // กำหนดความกว้างที่คุณต้องการ
+                                                  child: TextFormField(
+                                                    validator: (value) {},
+                                                    controller:
+                                                        textEditingControllerSmokeperdayBox1,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "$smokeperdayBox1",
+                                                      border: InputBorder.none,
+
+                                                      //textEditingControllerAge
+                                                    ),
+                                                    // ค่าอื่น ๆ ของ TextField
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 0, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "มวนต่อวัน",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ]))
+                                ],
+                              ),
+                            )))
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
+                    child: Row(
+                      children: [
+                        Text(
+                          "ข้อมูลประวัติการแพทย์ (กล่องที่ 2)",
+                          style: TextStyle(
+                            color: Color(0XFF5A5959),
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Card(
+                                child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 10, 10, 10),
+                              child: Column(
+                                children: [
+                                  //Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0,0, 0),)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          "ประวัติการศึกษา",
+                                          style: TextStyle(
+                                              fontFamily: 'Kanit',
+                                              fontSize: 15),
+                                        ),
+                                        Text(
+                                          "                                                                ",
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 1,
+                                                      groupValue:
+                                                          EducationLevelBox2,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox2 = $val");
+                                                        setEducationLevelBox2(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "ต่ำกว่าระดับมัธยมตอนต้น",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                     "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 2,
+                                                      groupValue:
+                                                          EducationLevelBox2,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox2 = $val");
+                                                        setEducationLevelBox2(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "ระดับมัธยมตอนปลาย",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                           "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 3,
+                                                      groupValue:
+                                                          EducationLevelBox2,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox2 = $val");
+                                                        setEducationLevelBox2(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "ระดับปริญญาตรี",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                                 "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 24,
+                                              child: Row(
+                                                children: [
+                                                  Radio(
+                                                      value: 4,
+                                                      groupValue:
+                                                          EducationLevelBox2,
+                                                      //activeColor: Colors.green,
+                                                      onChanged: (val) {
+                                                        print(
+                                                            "EducationLevelBox2 = $val");
+                                                        setEducationLevelBox2(
+                                                            int.parse(val
+                                                                .toString()));
+                                                      }),
+                                                  Text(
+                                                    "สูงกว่าระดับปริญญาตรี",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 12),
+                                                  ),
+                                                  Text(
+                                                      "                                        "),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "ประวัติการสูบบุหรี่",
+                                              style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontSize: 15),
+                                            ),
+                                            Text(
+                                              "หมายเหตุ : ถ้าปัจจุบันเลิกสูบบุหรี่แล้วให้เลือก มี",
+                                              style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Color.fromARGB(
+                                                      255, 255, 17, 0),
+                                                  fontSize: 10),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(30, 0, 0, 0),
+                                              child: ToggleButtons(
+                                                constraints: BoxConstraints(
+                                                    maxWidth: 55,
+                                                    minWidth: 50,
+                                                    minHeight: 35,
+                                                    maxHeight: 35),
+                                                isSelected: _SelectgenSmokeBox2,
+                                                children: <Widget>[
+                                                  Container(
+                                                      width: 20,
+                                                      child: new Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: <Widget>[
+                                                          new Text(
+                                                            "มี",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.red,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 15),
+                                                          )
+                                                        ],
+                                                      )),
+                                                  Container(
+                                                      width: 25,
+                                                      child: new Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: <Widget>[
+                                                          new Text(
+                                                            "ไม่มี",
+                                                            style: TextStyle(
+                                                                color:
+                                                                    Colors.blue,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 15),
+                                                          )
+                                                        ],
+                                                      )),
+                                                ],
+                                                onPressed: (int index) {
+                                                  setState(() {
+                                                    for (int i = 0;
+                                                        i <
+                                                            _SelectgenSmokeBox2
+                                                                .length;
+                                                        i++) {
+                                                      _SelectgenSmokeBox2[i] =
+                                                          i == index;
+                                                    }
+                                                    if (_SelectgenSmokeBox2[
+                                                        0]) {
+                                                      smokeBox2 = 1;
+                                                      print(
+                                                          "มีประวัติสูบบุหรี่ = $smokeBox2");
+                                                    } else {
+                                                      smokeBox2 = 0;
+                                                      print(
+                                                          "ไม่มีมีประวัติสูบบุหรี่ = $smokeBox2");
+                                                    }
+                                                  });
+                                                },
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                        Radius.circular(20)),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "ปริมาณบุหรี่ที่สูบต่อวัน",
+                                          style: TextStyle(
+                                              fontFamily: 'Kanit',
+                                              fontSize: 15),
+                                        ),
+                                        Text(
+                                            "                                                   ")
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 0),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Slider(
+                                                  value: smokeperdaysliderBox2,
+                                                  onChanged: (newRating) {
+                                                    setState(
+                                                      () => smokeperdaysliderBox2 =
+                                                          newRating, //รับค่าจากslider มาใน agelider
+                                                    );
+                                                    setState(() {
+                                                      smokeperdayBox2 =
+                                                          smokeperdaysliderBox2 //เปลี่ยน double เป็น integer เพื่ออะไปใช้ต่อ
+                                                              .floor();
+                                                    });
+                                                    setState(() {
+                                                      //รับค่าจาก slider มาใน textEditingController ของ textfleid เพื่อแสดงค่าปัจุบันให้ user เห็น
+                                                      textEditingControllerSmokeperdayBox2
+                                                              .text =
+                                                          (newRating.floor())
+                                                              .toString();
+                                                    });
+                                                  },
+                                                  min: 0,
+                                                  max: 100,
+                                                  divisions: 100,
+                                                  label: "$smokeperdayBox2",
+                                                )
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                Container(
+                                                  width:
+                                                      27, // กำหนดความกว้างที่คุณต้องการ
+                                                  child: TextFormField(
+                                                    validator: (value) {},
+                                                    controller:
+                                                        textEditingControllerSmokeperdayBox2,
+                                                    keyboardType:
+                                                        TextInputType.number,
+                                                    decoration: InputDecoration(
+                                                      hintText:
+                                                          "$smokeperdayBox2",
                                                       border: InputBorder.none,
 
                                                       //textEditingControllerAge

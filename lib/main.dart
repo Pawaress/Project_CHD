@@ -9,7 +9,9 @@ import 'package:project_chd/Edit_profile_2.dart';
 import 'package:project_chd/Main_page.dart';
 import 'package:project_chd/Sign_In.dart';
 import 'package:project_chd/Sign_Up.dart';
+import 'package:project_chd/advice.dart';
 import 'package:project_chd/chatman.dart';
+import 'package:project_chd/result.dart';
 import 'package:project_chd/test.dart';
 import 'Before_assessment_page.dart';
 
@@ -94,6 +96,40 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
           child: Column(children: [
             Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Ad(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('advice'),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Re(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('result'),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
