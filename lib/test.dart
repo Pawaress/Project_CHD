@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class test extends StatefulWidget {
@@ -25,10 +26,111 @@ class _testState extends State<test> {
 
   final _formKey = GlobalKey<FormState>();
   String textdd = '';
+  void _showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return (Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AlertDialog(
+              backgroundColor: Color(0XFFD9D9D9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              titlePadding: const EdgeInsets.all(0),
+              title: Container(
+                  padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "something went wrong !",
+                        style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              content: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 45),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Wrap(
+                      children: <Widget>[
+                        Text(
+                          'The email address is badly formated There is no user record.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              /*actions: [
+            TextButton(onPressed: () {}, child: Text("yes")),
+            TextButton(onPressed: () {}, child: Text("no"))
+          ],*/
+
+              //elevation: 24,
+              //backgroundColor: Colors.blue,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFD9D9D9),
+                      padding: EdgeInsetsDirectional.fromSTEB(35, 10, 35, 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), // กำหนดความโค้งของมุมปุ่ม
+                      ),
+
+                      textStyle:
+                          TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
+                    },
+                    child: Text(
+                      'back',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Column(
@@ -216,9 +318,69 @@ class _testState extends State<test> {
                         items: dropdownItems),
                   )),
             ),
+            Text('drop'),
+            Text('drop'),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+              child: Column(
+                children: [
+                  AlertDialog(
+                    title: Text("Accept"),
+
+                    content: Text("maxsaimaissss"),
+                    actions: [
+                      TextButton(onPressed: () {}, child: Text("yes")),
+                      TextButton(onPressed: () {}, child: Text("no"))
+                    ],
+
+                    //elevation: 24,
+                    //backgroundColor: Colors.blue,
+                  )
+                ],
+              ),
+            ),
+            Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _showAlertDialog(context);
+                  },
+                  child: Text("max"),
+                ))
           ],
         ),
       ),
     );
   }
 }
+
+
+/*
+
+
+Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                              child: Column(
+                                children: [
+                                  AlertDialog(
+                                    title: Text("Accept"),
+
+                                    content: Text("maxsaimaissss"),
+                                    actions: [
+                                      TextButton(
+                                          onPressed: () {}, child: Text("yes")),
+                                      TextButton(
+                                          onPressed: () {}, child: Text("no"))
+                                    ],
+
+                                    //elevation: 24,
+                                    //backgroundColor: Colors.blue,
+                                  )
+                                ],
+                              ),
+                            )
+
+
+
+ */
