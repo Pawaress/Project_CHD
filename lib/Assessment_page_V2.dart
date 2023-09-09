@@ -787,6 +787,9 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                 Slider(
                                                   value: smokeperdayslider,
                                                   onChanged: (newRating) {
+                                                    if (smoke == 0) {
+                                                      return null;
+                                                    }
                                                     setState(
                                                       () => smokeperdayslider =
                                                           newRating, //รับค่าจากslider มาใน agelider

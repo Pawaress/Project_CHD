@@ -108,20 +108,18 @@ class _E_PoState extends State<E_Po> {
                                               children: [
                                                 Container(
                                                   margin: EdgeInsetsDirectional
-                                                      .fromSTEB(25, 10, 10, 10),
+                                                      .fromSTEB(25, 10, 0, 10),
                                                   decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Colors.white,
-                                                      // สีขอบ
-                                                      width:
-                                                          1, // ความกว้างของเส้นขอบ
-                                                    ),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(10),
+                                                      bottomLeft:
+                                                          Radius.circular(10),
+                                                    ),
                                                     color: Color(0XFFD9D9D9),
                                                   ),
-                                                  width: 200,
+                                                  width: 150,
                                                   child: TextFormField(
                                                     validator: (value) {},
                                                     readOnly:
@@ -132,26 +130,70 @@ class _E_PoState extends State<E_Po> {
                                                         border:
                                                             InputBorder.none,
                                                         hintText: "ชิมมินกยู",
-                                                        suffixIcon: IconButton(
-                                                          icon:
-                                                              Icon(Icons.edit),
-                                                          color: Colors.black,
-                                                          onPressed: () {
-                                                            setState(() {
-                                                              //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                              checkEditUsername =
-                                                                  !checkEditUsername;
-                                                            });
-                                                          },
-                                                        ),
                                                         contentPadding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(10,
-                                                                    14, 0, 0)),
+                                                                .fromSTEB(
+                                                                    10,
+                                                                    14.2,
+                                                                    0,
+                                                                    16)),
                                                   ),
                                                 ),
                                               ],
                                             ),
+                                            Column(
+                                              children: [
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(20, 13,
+                                                                  20, 13),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  10),
+                                                        ), // กำหนดความโค้งของมุมปุ่ม
+                                                      ),
+
+                                                      textStyle: TextStyle(
+                                                          fontSize:
+                                                              15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                    ),
+                                                    onPressed: () {
+                                                      //Navigator.of(context).pop();
+                                                      // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
+                                                      setState(() {
+                                                        //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                        checkEditUsername =
+                                                            !checkEditUsername;
+                                                      });
+                                                    },
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        // เมื่อไอคอนถูกแตะ
+                                                        setState(() {
+                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                          checkEditUsername =
+                                                              !checkEditUsername;
+                                                        }); // ใช้ Navigator.pop เพื่อย้อนกลับไปยังหน้าก่อนหน้านี้
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    )),
+                                              ],
+                                            )
                                           ],
                                         ),
                                       ),
@@ -174,53 +216,90 @@ class _E_PoState extends State<E_Po> {
                                               children: [
                                                 Container(
                                                   margin: EdgeInsetsDirectional
-                                                      .fromSTEB(25, 10, 10, 10),
+                                                      .fromSTEB(25, 10, 0, 10),
                                                   decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Colors.white,
-                                                      // สีขอบ
-                                                      width:
-                                                          1, // ความกว้างของเส้นขอบ
-                                                    ),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(10),
+                                                      bottomLeft:
+                                                          Radius.circular(10),
+                                                    ),
                                                     color: Color(0XFFD9D9D9),
                                                   ),
-                                                  width: 200,
+                                                  width: 150,
                                                   child: TextFormField(
                                                     validator: (value) {},
                                                     readOnly:
                                                         checkEditEmail, //ส่วนเช็คว่าพิมได้หรือไม่
-
                                                     controller:
                                                         textEditingControllerEmail, //ส่วนที่ไว้รับค่าจากuser
                                                     decoration: InputDecoration(
                                                         border:
                                                             InputBorder.none,
-                                                        hintText:
-                                                            "ชิมมินกยู", //ค่า Email ปัจุบันก่อนแก้ไข
-                                                        suffixIcon: IconButton(
-                                                          icon:
-                                                              Icon(Icons.edit),
-                                                          color: Colors.black,
-                                                          onPressed: () {
-                                                            setState(() {
-                                                              //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-
-                                                              checkEditEmail =
-                                                                  !checkEditEmail;
-                                                            });
-                                                          },
-                                                        ),
+                                                        hintText: "ชิมมินกยู",
                                                         contentPadding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(10,
-                                                                    14, 0, 0)),
+                                                                .fromSTEB(
+                                                                    10,
+                                                                    14.2,
+                                                                    0,
+                                                                    16)),
                                                   ),
                                                 ),
                                               ],
                                             ),
+                                            Column(
+                                              children: [
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(20, 13,
+                                                                  20, 13),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  10),
+                                                        ), // กำหนดความโค้งของมุมปุ่ม
+                                                      ),
+
+                                                      textStyle: TextStyle(
+                                                          fontSize:
+                                                              15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                    ),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                        checkEditEmail =
+                                                            !checkEditEmail;
+                                                      });
+                                                    },
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        // เมื่อไอคอนถูกแตะ
+                                                        setState(() {
+                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                          checkEditEmail =
+                                                              !checkEditEmail;
+                                                        }); // ใช้ Navigator.pop เพื่อย้อนกลับไปยังหน้าก่อนหน้านี้
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    )),
+                                              ],
+                                            )
                                           ],
                                         ),
                                       ),
@@ -243,20 +322,18 @@ class _E_PoState extends State<E_Po> {
                                               children: [
                                                 Container(
                                                   margin: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 10, 10, 10),
+                                                      .fromSTEB(10, 10, 0, 10),
                                                   decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Colors.white,
-                                                      // สีขอบ
-                                                      width:
-                                                          1, // ความกว้างของเส้นขอบ
-                                                    ),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            10),
+                                                        BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(10),
+                                                      bottomLeft:
+                                                          Radius.circular(10),
+                                                    ),
                                                     color: Color(0XFFD9D9D9),
                                                   ),
-                                                  width: 200,
+                                                  width: 150,
                                                   child: TextFormField(
                                                     validator: (value) {},
                                                     readOnly:
@@ -273,24 +350,67 @@ class _E_PoState extends State<E_Po> {
                                                             checkEditPassword
                                                                 ? '********'
                                                                 : 'Password', //ค่า password ปัจุบันก่อนแก้ไข
-                                                        suffixIcon: IconButton(
-                                                          icon:
-                                                              Icon(Icons.edit),
-                                                          color: Colors.black,
-                                                          onPressed: () {
-                                                            setState(() {
-                                                              //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                              checkEditPassword =
-                                                                  !checkEditPassword;
-                                                            });
-                                                          },
-                                                        ),
+
                                                         contentPadding:
                                                             EdgeInsetsDirectional
-                                                                .fromSTEB(10,
-                                                                    14, 0, 0)),
+                                                                .fromSTEB(
+                                                                    10,
+                                                                    14.2,
+                                                                    0,
+                                                                    16)),
                                                   ),
                                                 ),
+                                              ],
+                                            ),
+                                            Column(
+                                              children: [
+                                                ElevatedButton(
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(20, 13,
+                                                                  20, 13),
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  10),
+                                                        ), // กำหนดความโค้งของมุมปุ่ม
+                                                      ),
+
+                                                      textStyle: TextStyle(
+                                                          fontSize:
+                                                              15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                    ),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                        checkEditPassword =
+                                                            !checkEditPassword;
+                                                      });
+                                                    },
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        // เมื่อไอคอนถูกแตะ
+                                                        setState(() {
+                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                          checkEditPassword =
+                                                              !checkEditPassword;
+                                                        });
+                                                      },
+                                                      child: Icon(
+                                                        Icons.edit,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    )),
                                               ],
                                             )
                                           ],

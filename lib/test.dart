@@ -18,11 +18,13 @@ class _testState extends State<test> {
   }
 
   String selectedValue = "1";
+  bool checkEditEmail = true;
 
   bool checkEditUsername = false;
   bool checkEditPassword = false;
-  TextEditingController textEditingControllerUsername = TextEditingController();
+  TextEditingController textEditingControllerEmail = TextEditingController();
   TextEditingController textEditingControllerPassword = TextEditingController();
+  TextEditingController textEditingControllerUsername = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   String textdd = '';
@@ -346,7 +348,173 @@ class _testState extends State<test> {
                     _showAlertDialog(context);
                   },
                   child: Text("max"),
-                ))
+                )),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Email",
+                        style: TextStyle(fontFamily: 'Inters', fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsetsDirectional.fromSTEB(25, 10, 0, 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                          ),
+                          color: Color(0XFFD9D9D9),
+                        ),
+                        width: 200,
+                        child: TextFormField(
+                          validator: (value) {},
+                          readOnly: checkEditEmail, //ส่วนเช็คว่าพิมได้หรือไม่
+
+                          controller:
+                              textEditingControllerEmail, //ส่วนที่ไว้รับค่าจากuser
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText:
+                                  "ชิมมินกยู", //ค่า Email ปัจุบันก่อนแก้ไข
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.edit),
+                                color: Colors.black,
+                                onPressed: () {
+                                  setState(() {
+                                    //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+
+                                    checkEditEmail = !checkEditEmail;
+                                  });
+                                },
+                              ),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 15, 0, 15)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFD9D9D9),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(35, 13, 35, 13),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10),
+                            ), // กำหนดความโค้งของมุมปุ่ม
+                          ),
+
+                          textStyle:
+                              TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                        ),
+                        onPressed: () {
+                          //Navigator.of(context).pop();
+                          // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
+                        },
+                        child: Text(
+                          'back',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Kanit',
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            //-----------------------------------------------------------------
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "ชื่อผู้ใช้",
+                        style: TextStyle(fontFamily: 'Kanit', fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsetsDirectional.fromSTEB(25, 10, 0, 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                          ),
+                          color: Color(0XFFD9D9D9),
+                        ),
+                        width: 200,
+                        child: TextFormField(
+                          validator: (value) {},
+                          readOnly:
+                              checkEditUsername, //ส่วนเช็คว่าพิมได้หรือไม่
+                          controller:
+                              textEditingControllerUsername, //ส่วนที่ไว้รับค่าจากuser
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "ชิมมินกยู",
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.edit),
+                                color: Colors.black,
+                                onPressed: () {
+                                  setState(() {
+                                    //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                    checkEditUsername = !checkEditUsername;
+                                  });
+                                },
+                              ),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 14.2, 0, 16)),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(20, 13, 20, 13),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10),
+                            ), // กำหนดความโค้งของมุมปุ่ม
+                          ),
+
+                          textStyle:
+                              TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                        ),
+                        onPressed: () {
+                          //Navigator.of(context).pop();
+                          // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
+                        },
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
