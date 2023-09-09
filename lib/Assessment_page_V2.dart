@@ -11,119 +11,82 @@ class A_Pa_V2 extends StatefulWidget {
 enum SingingCharacter { lafayette, jefferson }
 
 class _A_Pa_V2State extends State<A_Pa_V2> {
-  /*
-    ***กล่องที่ให้เพิ่มมา 2 อัน กล่องที่ 1 อยู่ในบรรณทัด 897 ถึง 1286 , กล่องที่ 2 อยู่ในบรรณทัด 1303 ถึง 1690
-    ส่วนตัวแปรที่สามารถเก็บไปใช้ต่อ อยู่ บรรณทัด 1732 ถึง 1736 
-   */
   //ค่าที่ได้จากตัวแปรใช้จริง จะอยู่ส่วนของท้ายๆโค้ด
   //ตัวแปรไว้รับค่า wiget ต่างๆ ---------------------------------------------------------------------------------
-  //set ค่า TextController ของ textfield ส่วนของ อายุ ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
+  //set ค่า TextController ของ textfield ส่วนของ อายุ ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 398
   TextEditingController textEditingControllerAge =
       TextEditingController(text: '0');
-  //set ค่า TextController ของ textfield ส่วนของ ประวิการสูบบุหรี่ต่อวัน ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0
+  //set ค่า TextController ของ textfield ส่วนของ ประวิการสูบบุหรี่ต่อวัน ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 822
   TextEditingController textEditingControllerSmokeperday =
       TextEditingController(text: '0');
-
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )-----------------
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ textEditingControllerSmokeperday ****
-  TextEditingController textEditingControllerSmokeperdayBox1 =
-      TextEditingController(text: '0');
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ textEditingControllerSmokeperday ****
-  TextEditingController textEditingControllerSmokeperdayBox2 =
-      TextEditingController(text: '0');
-  // -------------------------------------------------
+  //set ค่า TextController ของ textfield ส่วนของ Cholesterolในเลือด ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 1406
   TextEditingController textEditingControllerCholesterol =
       TextEditingController(text: '0');
+  //set ค่า TextController ของ textfield ส่วนของ ต่าความดันตัวบน ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 1483
   TextEditingController textEditingControllerSYS =
       TextEditingController(text: '0');
+  //set ค่า TextController ของ textfield ส่วนของ ต่าความดันตัวล่าง ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 1559
   TextEditingController textEditingControllerDIA =
       TextEditingController(text: '0');
+  //set ค่า TextController ของ textfield ส่วนของ อัตราการเต้นหัวใจ ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 1711
   TextEditingController textEditingControllerHR =
       TextEditingController(text: '0');
+  //set ค่า TextController ของ textfield ส่วนของ ระดับนํ้าตาลในเลือด ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด 1787
   TextEditingController textEditingControllerGlucose =
       TextEditingController(text: '0');
+  //set ค่า TextController ของ textfield ส่วนของ BMI ที่ user จะกรอกให้มีค่าเริ่มต้นที่ 0 บรรณทัด บรรณทัด 1635
   TextEditingController textEditingControllerBMI =
       TextEditingController(text: '0');
 
-  //set ค่า ให้ปุ่ม ToggleButtons ที่มี 2 ปุ่มอันแรก ให้แสดงแบบกด(true)  แล้วอันที่สองคือแสดงแบบยังไม่กด(false)
+  //set ค่า ให้ปุ่ม ToggleButtons ที่มี 2 ปุ่มอันแรก ให้แสดงแบบกด(true) แล้วอันที่สองคือแสดงแบบยังไม่กด(false)ของทุก ToggleButtons
   List<bool> _Selectgender = <bool>[true, false];
-
   List<bool> _SelectgenSmoke = <bool>[true, false];
   List<bool> _SelectPressure = <bool>[true, false];
   List<bool> _SelectStroke = <bool>[true, false];
   List<bool> _SelectBloodPressure = <bool>[true, false];
   List<bool> _SelectDiabetes = <bool>[true, false];
-  //Pressure
-  //Stroke
-  //BloodPressure
-  //Diabetes
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ _SelectgenSmoke ****
-  List<bool> _SelectgenSmokeBox1 = <bool>[true, false];
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ _SelectgenSmoke ****
-  List<bool> _SelectgenSmokeBox2 = <bool>[true, false];
-  //-----------------------------------------
 
   //set ageslider เป็น double เพื่อรับค่า จาก slider (sliderมันรับเฉพาะDoubleเท่านั้น)
   double ageslider = 1.0;
   //set smokeperdayslider เป็น double เพื่อรับค่า จาก slider (sliderมันรับเฉพาะDoubleเท่านั้น)
   double smokeperdayslider = 1.0;
 
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ smokeperdayslider ****
-  double smokeperdaysliderBox1 = 1.0;
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ smokeperdayslider ****
-  double smokeperdaysliderBox2 = 1.0;
   //----------------------------------------------------------------------------------------------------------
 
   //ตัวแปรใช้จริง ข้างล่าง ***ค่าที่จะใช้จริงจะอยู่ส่วนปุ่มอันท้ายสุดของ code ------------------------------------------------------------------
   //ตัวแปรนี้มีไว้เก็บค่า อายุ ตามค่า slider ที่ เราเลื่อน หรือ เติมในtextfleid
+
+  //ตัวแปรนี้มีไว้เก็บค่า เพศ ชาย = 0 หญิง = 1 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 300 กับ 304
   int age = 0;
-  //ตัวแปรนี้มีไว้เก็บค่า เพศ ชาย = 0 หญิง = 1 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 324 กับ 328
-  int gender = 0;
-  //ตัวแปรนี้มีไว้เก็บค่า ประวัติการสูบบุหรี่ มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 764 กับ 768
+  //ตัวแปรนี้มีไว้เก็บค่า ประวัติการสูบบุหรี่ มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 740 กับ 744
   int smoke = 1;
-  int Pressure = 1;
+  //ตัวแปรนี้มีไว้เก็บค่า ประวัติรับยาความดัน มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 979 กับ 983
+  int PressureMedicine = 1;
+  //ตัวแปรนี้มีไว้เก็บค่า ประวัติโรคหลอดเลือดในสมอง มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 1086 กับ 1090
   int Stroke = 1;
+  //ตัวแปรนี้มีไว้เก็บค่า ประวัติความดันโลหิตสูง มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 1195 กับ 1199
   int BloodPressure = 1;
+  //ตัวแปรนี้มีไว้เก็บค่า ประวิติการเป็นโรคเบาหวาน มี = 1 ไม่มี = 0 สามารถเปลี่ยนได้ในตัวแปร บรรทัด 1302 กับ 1306
   int Diabetes = 1;
-  //Pressure
-  //Stroke
-  //BloodPressure
-  //Diabetes
-
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ smoke ****
-  int smokeBox1 = 1;
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ smoke ****
-  int smokeBox2 = 1;
-  //----------------------------------------
-
   //ตัวแปรนี้มีไว้เก็บค่า จำนวนการสุบบุหรี่ต่อวัน ตามค่า slider ที่ เราเลื่อน หรือ เติมใน textfleid
   int smokeperday = 0;
-
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ smokeperday ****
-  int smokeperdayBox1 = 0;
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ smokeperday ****
-  int smokeperdayBox2 = 0;
+  int gender = 0;
   //----------------------------------------
+  //ตัวแปรนี้มีไว้เก็บค่า Cholesterolในเลือด ที่เราเติมใน textfleid จาก textEditingController อีกที
   double Cholesterol = 0;
+  //ตัวแปรนี้มีไว้เก็บค่า Glucoseในเลือด ที่เราเติมใน textfleid จาก textEditingController อีกที
   double Glucose = 0;
+  //ตัวแปรนี้มีไว้เก็บค่า อัดตราการเต้นของหัวใจ ที่เราเติมใน textfleid จาก textEditingController อีกที
   double HR = 0;
+  //ตัวแปรนี้มีไว้เก็บค่า BMI ที่เราเติมใน textfleid จาก textEditingController อีกที
   double BMI = 0;
+  //ตัวแปรนี้มีไว้เก็บค่า ค่าความดันตัวบน ที่เราเติมใน textfleid จาก textEditingController อีกที
   double SYS = 0;
+  //ตัวแปรนี้มีไว้เก็บค่า ค่าความดันตัวล่าง ที่เราเติมใน textfleid จาก textEditingController อีกที
   double DIA = 0;
 
   //ตัวแปรนี้มีไว้เก็บค่า ระกับการศึกษา จะมี 4 ค่าตามคือ 1 2 3 4 ของ radio ที่เราเลือก สามารถแก้ค่า ทั้ง 4 ได้ในบรรทัดตามลำดับดังนี้ 542 575 608 641
   int EducationLevel = 0;
-
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 1 ) ใช้เหมือนค่า ของ EducationLevel ****
-  int EducationLevelBox1 = 0;
-  //  ++++++ ( กล่องที่ให้เพิ่มกล่องที่ 2 ) ใช้เหมือนค่า ของ EducationLevel ****
-  int EducationLevelBox2 = 0;
-  //----------------------------------------
 
   //---------------------------------------------------------------------------------------------------------------------------
   @override
@@ -132,10 +95,6 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
     super.initState();
 
     EducationLevel = 1;
-    // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-    EducationLevelBox1 = 1;
-    EducationLevelBox2 = 1;
-    //----------------------------------------
   }
 
   setEducationLevel(int val) {
@@ -144,22 +103,6 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
       EducationLevel = val;
     });
   }
-
-  // ------เพิ่มของ (กล่องที่ 1 กับ 2 )----------
-  setEducationLevelBox1(int val) {
-    //function มีไว้ อัพเดทค่า EducationLevelBox1
-    setState(() {
-      EducationLevelBox1 = val;
-    });
-  }
-
-  setEducationLevelBox2(int val) {
-    //function มีไว้ อัพเดทค่า EducationLevelBox2
-    setState(() {
-      EducationLevelBox2 = val;
-    });
-  }
-  //----------------------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -912,6 +855,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                     ),
                   ),
                   Padding(
+                    // เริ่ม กล่อง ที่ ปรับเพิ่ม เริ่มตรงนนี้นะ ****
                     padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
                     child: Row(
                       children: [
@@ -928,7 +872,6 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                     ),
                   ),
                   Padding(
-                    // เริ่ม กล่อง ที่ 1 ตรงนนี้นะ ****
                     padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -1033,13 +976,13 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                             i == index;
                                                       }
                                                       if (_SelectPressure[0]) {
-                                                        Pressure = 1;
+                                                        PressureMedicine = 1;
                                                         print(
-                                                            "มีประวัติความดันโลหิต = $Pressure");
+                                                            "มีประวัติความดันโลหิต = $PressureMedicine");
                                                       } else {
-                                                        Pressure = 0;
+                                                        PressureMedicine = 0;
                                                         print(
-                                                            "ไม่มีมีประวัติความดันโลหิต = $Pressure");
+                                                            "ไม่มีมีประวัติความดันโลหิต = $PressureMedicine");
                                                       }
                                                     });
                                                   },
@@ -1940,12 +1883,13 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                             print('ระดับการศึกษา = $EducationLevel');
                             print('สูบุหรี่ต่อวัน = $smokeperday');
                             print('ประวัติสูบบุหรี่ =  $smoke');
-                            print('ประวัติการรับยาลดความดัน =  $Pressure');
+                            print(
+                                'ประวัติการรับยาลดความดัน =  $PressureMedicine');
                             print('ประวัติการเป็นโรคหลอดเลือดสมอง =  $Stroke');
                             print(
                                 'ประวัติการเป็นโรคความดันโลหิต =  $BloodPressure');
                             print('ประวัติการเป็นโรคเบาหวาน =  $Diabetes');
-
+                            //หรือก็คือสามารถใช้ ค่าที่เป็น $ชื่อตัวแปร ด้านล่างได้เลย ตัวแปรทั้งหมดนี้เป็นแบบ double
                             print("-----------------------");
                             print("คอเลสเตอรอล = $Cholesterol");
                             print("ค่าความดันตัวบน = $SYS");
