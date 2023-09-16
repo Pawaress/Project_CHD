@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,9 @@ class test extends StatefulWidget {
 }
 
 class _testState extends State<test> {
+  TextEditingController textEditingControllerImage = TextEditingController();
+  late String image;
+  var img;
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
       DropdownMenuItem(child: Text("1"), value: "1"),
@@ -525,6 +529,41 @@ class _testState extends State<test> {
 
 /*
 
+(img == null)
+                      ? Icon(Icons.insert_photo, size: 200)
+                      : Image.file(img),
+                  IconButton(
+                      onPressed: () async {
+                        PickedFile? pickedFile = await ImagePicker().getImage(
+                          source: ImageSource.gallery,
+                          maxHeight: 1800,
+                          maxWidth: 1800,
+                        );
+                        //var pickImage = ImagePicker().pickImage(
+
+                        //XFile? pickedFile = await pickImage;
+                        String bit;
+                        bit = base64.encode(await pickedFile!.readAsBytes());
+                        textEditingControllerImage.text = bit;
+                        if (pickedFile != null) {
+                          setState(() {
+                            img = "images/user-icon1.png";
+                          });
+                        }
+                      },
+                      icon: Icon(Icons.insert_photo))
+
+
+  Padding(
+              padding: EdgeInsetsDirectional.all(10),
+              child: Column(
+                children: [
+                  (img == null)
+                      ? Icon(Icons.insert_photo, size: 200)
+                      : image.file(img),
+                ],
+              ),
+            )
 
 Padding(
                               padding:

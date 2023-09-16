@@ -115,6 +115,216 @@ class A_B_AState extends State<A_B_A> {
     );
   }
 
+  void _showAlertDialogss(BuildContext context) {
+    //ฟังก์ชันแสดงตัวAlert
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return (Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AlertDialog(
+              backgroundColor: Color(0XFFD9D9D9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              titlePadding: const EdgeInsets.all(0),
+              title: Container(
+                  padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "แจ้งเตือนผู้ใช้", //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                        style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              content: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 45),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Wrap(
+                      children: <Widget>[
+                        Text(
+                          'ผู้ใช้กรอกรหัสผ่านไม่ถูกต้อง กรุณากรอกรหัสผ่านให้ตรงกัน', //ส่วนของ ข้อความ เนื้อหาต่อจาก title
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              /*actions: [
+            TextButton(onPressed: () {}, child: Text("yes")),
+            TextButton(onPressed: () {}, child: Text("no"))
+          ],*/
+
+              //elevation: 24,
+              //backgroundColor: Colors.blue,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFD9D9D9),
+                      padding: EdgeInsetsDirectional.fromSTEB(35, 10, 35, 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), // กำหนดความโค้งของมุมปุ่ม
+                      ),
+
+                      textStyle:
+                          TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                    },
+                    child: Text(
+                      'back',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+      },
+    );
+  }
+
+  void _showAlertDialogsSaveData(BuildContext context) {
+    //ฟังก์ชันแสดงตัวAlert
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return (Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AlertDialog(
+              backgroundColor: Color(0XFFD9D9D9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              titlePadding: const EdgeInsets.all(0),
+              title: Container(
+                  padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                  decoration: const BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "บันทึกข้อมูลสำเร็จ", //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                        style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              content: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Wrap(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 32,
+                          backgroundImage: AssetImage('images/Icon_True.png'),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      child: Text(
+                        "บันทึกข้อมูลเรียบร้อยแล้ว", //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                        style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+
+              /*actions: [
+            TextButton(onPressed: () {}, child: Text("yes")),
+            TextButton(onPressed: () {}, child: Text("no"))
+          ],*/
+
+              //elevation: 24,
+              //backgroundColor: Colors.blue,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFD9D9D9),
+                      padding: EdgeInsetsDirectional.fromSTEB(35, 10, 35, 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), // กำหนดความโค้งของมุมปุ่ม
+                      ),
+
+                      textStyle:
+                          TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                    },
+                    child: Text(
+                      'OK',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +344,35 @@ class A_B_AState extends State<A_B_A> {
                     child: Text("ปุ่มกดแล้วเด้ง Aert ทันที"),
                   ))
             ],
-          )
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _showAlertDialogsSaveData(
+                          context); //ส่วนในการเรียกฟังก์ชันที่ ไว้สำหรับแสดง Alert
+                    },
+                    child: Text("ปุ่มกดแล้วเด้ง Aert ทันที"),
+                  ))
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _showAlertDialog(
+                          context); //ส่วนในการเรียกฟังก์ชันที่ ไว้สำหรับแสดง Alert
+                    },
+                    child: Text("ปุ่มกดแล้วเด้ง Aert ทันที"),
+                  ))
+            ],
+          ),
         ],
       ),
     );

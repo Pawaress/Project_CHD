@@ -5,6 +5,7 @@ import 'package:project_chd/Before_chatbot_page.dart';
 import 'package:project_chd/Call_1669_page.dart';
 import 'package:project_chd/Edit_profile.dart';
 import 'package:project_chd/Sign_In.dart';
+import 'package:project_chd/advice.dart';
 import 'Before_assessment_page.dart';
 
 class M_Pa extends StatefulWidget {
@@ -126,7 +127,7 @@ class _M_PaState extends State<M_Pa> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 5),
+                                          0, 0, 0, 0),
                                       child: Column(
                                         children: [
                                           Column(
@@ -136,8 +137,9 @@ class _M_PaState extends State<M_Pa> {
                                               Text(
                                                 "ความเสี่ยง",
                                                 style: TextStyle(
+                                                    height: 1,
                                                     fontWeight: FontWeight.bold,
-                                                    fontFamily: 'Inter'),
+                                                    fontFamily: 'kanit'),
                                               ),
                                             ],
                                           ),
@@ -146,21 +148,14 @@ class _M_PaState extends State<M_Pa> {
                                     ),
                                     Text(
                                       "40%", //ใส่ต่าตวามเสี่ยงตรงนี้(ต้องเป็น stringนะ)
+
                                       style: TextStyle(
+                                          height: 1,
                                           color: Color.fromARGB(255, 255, 0, 0),
-                                          fontSize: 45,
+                                          fontSize: 80,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'Inter'),
                                     )
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage:
-                                          AssetImage('images/user-icon.png'),
-                                    ),
                                   ],
                                 ),
                               ],
@@ -190,90 +185,7 @@ class _M_PaState extends State<M_Pa> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => M_Pa(),
-                                          //ตรงนี้ส่วนของลิ้งไปหน้าผลการประเมิน
-                                          //ตอนนี้ยังไม่มีหน้านั้นเลยลิ้งหน้าเดิมไปก่อน
-                                        ),
-                                      );
-                                    },
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child: Card(
-                                        color: Color(0xFF4FCCBD),
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.all(10),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0, 0, 0, 0),
-                                                    child: Column(
-                                                      children: [
-                                                        Image.asset(
-                                                          'images/Icon_As.png',
-                                                          // ระบุเส้นทางของไอคอนภาพ
-                                                          width:
-                                                              50, // กำหนดความกว้างของไอคอน
-                                                          height:
-                                                              50, // กำหนดความสูงของไอคอน
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "ผลการประเมิน",
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: 'Kanit',
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => M_Pa(),
+                                          builder: (context) => Ad(),
                                           //ตรงนี้ส่วนของลิ้งไปคำแนะนำ
                                           //ตอนนี้ยังไม่มีหน้านั้นเลยลิ้งหน้าเดิมไปก่อน
                                         ),
@@ -299,14 +211,36 @@ class _M_PaState extends State<M_Pa> {
                                                                 0, 0, 0, 0),
                                                     child: Column(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/Icon_HandHeart.png',
-                                                          // ระบุเส้นทางของไอคอนภาพ
-                                                          width:
-                                                              50, // กำหนดความกว้างของไอคอน
-                                                          height:
-                                                              50, // กำหนดความสูงของไอคอน
-                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Image.asset(
+                                                              'images/Icon_HandHeart.png',
+                                                              // ระบุเส้นทางของไอคอนภาพ
+                                                              width:
+                                                                  50, // กำหนดความกว้างของไอคอน
+                                                              height:
+                                                                  50, // กำหนดความสูงของไอคอน
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child: Text(
+                                                                "คำแนะนำ",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 13,
+                                                                  fontFamily:
+                                                                      'Kanit',
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        )
                                                       ],
                                                     ),
                                                   ),
@@ -323,24 +257,6 @@ class _M_PaState extends State<M_Pa> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "คำแนะนำ",
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: 'Kanit',
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
                     Column(
@@ -357,7 +273,8 @@ class _M_PaState extends State<M_Pa> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => E_Po(),
-                                          //ตรงนี้ส่วนของลิ้งไปหน้าโปรไฟล์
+                                          //ตรงนี้ส่วนของลิ้งไปคำแนะนำ
+                                          //ตอนนี้ยังไม่มีหน้านั้นเลยลิ้งหน้าเดิมไปก่อน
                                         ),
                                       );
                                     },
@@ -381,14 +298,36 @@ class _M_PaState extends State<M_Pa> {
                                                                 0, 0, 0, 0),
                                                     child: Column(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/user-icon.png',
-                                                          // ระบุเส้นทางของไอคอนภาพ
-                                                          width:
-                                                              50, // กำหนดความกว้างของไอคอน
-                                                          height:
-                                                              50, // กำหนดความสูงของไอคอน
-                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Image.asset(
+                                                              'images/user-icon1.png',
+                                                              // ระบุเส้นทางของไอคอนภาพ
+                                                              width:
+                                                                  50, // กำหนดความกว้างของไอคอน
+                                                              height:
+                                                                  50, // กำหนดความสูงของไอคอน
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child: Text(
+                                                                "โปรไฟล์",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 13,
+                                                                  fontFamily:
+                                                                      'Kanit',
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        )
                                                       ],
                                                     ),
                                                   ),
@@ -405,24 +344,6 @@ class _M_PaState extends State<M_Pa> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "โปรไฟล์",
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: 'Kanit',
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
                     Column(
@@ -439,20 +360,20 @@ class _M_PaState extends State<M_Pa> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => S_In(),
-                                          //ตรงนี้ส่วนของลิ้งไปหน้าโปรไฟล์
+                                          //ตรงนี้ส่วนของลิ้งไปคำแนะนำ
+                                          //ตอนนี้ยังไม่มีหน้านั้นเลยลิ้งหน้าเดิมไปก่อน
                                         ),
                                       );
                                     },
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(25),
                                       child: Card(
-                                        color:
-                                            Color.fromARGB(255, 255, 140, 120),
+                                        color: Color(0xFFFF4D4D),
                                         child: Column(
                                           children: [
                                             Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.all(10),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(10, 20, 10, 20),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -464,14 +385,36 @@ class _M_PaState extends State<M_Pa> {
                                                                 0, 0, 0, 0),
                                                     child: Column(
                                                       children: [
-                                                        Image.asset(
-                                                          'images/Icon_Exit.png',
-                                                          // ระบุเส้นทางของไอคอนภาพ
-                                                          width:
-                                                              50, // กำหนดความกว้างของไอคอน
-                                                          height:
-                                                              50, // กำหนดความสูงของไอคอน
-                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Image.asset(
+                                                              'images/Icon_Exit.png',
+                                                              // ระบุเส้นทางของไอคอนภาพ
+                                                              width:
+                                                                  30, // กำหนดความกว้างของไอคอน
+                                                              height:
+                                                                  30, // กำหนดความสูงของไอคอน
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5,
+                                                                          0,
+                                                                          0,
+                                                                          0),
+                                                              child: Text(
+                                                                "ออกจากระบบ",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 13,
+                                                                  fontFamily:
+                                                                      'Kanit',
+                                                                ),
+                                                              ),
+                                                            )
+                                                          ],
+                                                        )
                                                       ],
                                                     ),
                                                   ),
@@ -488,24 +431,6 @@ class _M_PaState extends State<M_Pa> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "ออกจากระบบ",
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontFamily: 'Kanit',
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        )
                       ],
                     ),
                   ],

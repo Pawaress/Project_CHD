@@ -36,20 +36,182 @@ class AdState extends State<Ad> {
                 ),
               ),
               Text(
-                "CHD 10 years risk score",
+                "คำแนะนำ",
                 textAlign: TextAlign.center,
-                style:
-                    TextStyle(fontFamily: 'Inter', fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22),
               ),
               Text(
-                "",
+                "            ",
                 textAlign: TextAlign.center,
               ),
             ],
           ),
         ),
       ),
-      body: Text("advice"),
+      body: SingleChildScrollView(
+          child: Container(
+              color: Color(0XFFFFEEDD),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 60),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'images/Exo.png',
+                            // ระบุเส้นทางของไอคอนภาพ
+                            width: 110, // กำหนดความกว้างของไอคอน
+                            height: 110, // กำหนดความสูงของไอคอน
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          "ออกกำลังกายสัปดาห์ละ 3-5 ครั้ง ครั้งละ 30 นาที",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'images/healthy-food 1.png',
+                            // ระบุเส้นทางของไอคอนภาพ
+                            width: 110, // กำหนดความกว้างของไอคอน
+                            height: 110, // กำหนดความสูงของไอคอน
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          "รับประทานอาหารที่มีประโยชน์ งดของหวาน และของทอด",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'images/Smook.png',
+                            // ระบุเส้นทางของไอคอนภาพ
+                            width: 110, // กำหนดความกว้างของไอคอน
+                            height: 110, // กำหนดความสูงของไอคอน
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          "งดสูบบุหรี่ หรือลดปริมาณการสูบบุหรี่ลง",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'images/Pisical.png',
+                            // ระบุเส้นทางของไอคอนภาพ
+                            width: 110, // กำหนดความกว้างของไอคอน
+                            height: 110, // กำหนดความสูงของไอคอน
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          "พยายามควบคุมสภาพจิตใจของตัวเองให้มั่นคง",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Image.asset(
+                            'images/mum.png',
+                            // ระบุเส้นทางของไอคอนภาพ
+                            width: 150, // กำหนดความกว้างของไอคอน
+                            height: 150, // กำหนดความสูงของไอคอน
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          "ออกกำลังกายสัปดาห์ละ 3-5 ครั้ง ครั้งละ 30 นาที",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'Kanit',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ))),
     );
   }
 }
