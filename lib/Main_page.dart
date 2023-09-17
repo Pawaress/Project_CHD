@@ -6,6 +6,7 @@ import 'package:project_chd/Call_1669_page.dart';
 import 'package:project_chd/Edit_profile.dart';
 import 'package:project_chd/Sign_In.dart';
 import 'package:project_chd/advice.dart';
+import 'package:project_chd/result.dart';
 import 'Before_assessment_page.dart';
 
 class M_Pa extends StatefulWidget {
@@ -19,7 +20,7 @@ class _M_PaState extends State<M_Pa> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFF4FCCBD),
+        backgroundColor: Color(0xFFEBA37A),
         title: Container(
           padding: EdgeInsets.all(0),
           margin: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
@@ -105,7 +106,7 @@ class _M_PaState extends State<M_Pa> {
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (context) => E_Po(),
+                                                  builder: (context) => Re(),
                                                 ),
                                               );
                                             },
@@ -152,7 +153,7 @@ class _M_PaState extends State<M_Pa> {
                                       style: TextStyle(
                                           height: 1,
                                           color: Color.fromARGB(255, 255, 0, 0),
-                                          fontSize: 80,
+                                          fontSize: 70,
                                           fontWeight: FontWeight.bold,
                                           fontFamily: 'Inter'),
                                     )
@@ -194,12 +195,12 @@ class _M_PaState extends State<M_Pa> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(25),
                                       child: Card(
-                                        color: Color(0xFF4FCCBD),
+                                        color: Color(0xFFEBA37A),
                                         child: Column(
                                           children: [
                                             Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.all(10),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6, 7.5, 6, 7.5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -217,9 +218,9 @@ class _M_PaState extends State<M_Pa> {
                                                               'images/Icon_HandHeart.png',
                                                               // ระบุเส้นทางของไอคอนภาพ
                                                               width:
-                                                                  50, // กำหนดความกว้างของไอคอน
+                                                                  45, // กำหนดความกว้างของไอคอน
                                                               height:
-                                                                  50, // กำหนดความสูงของไอคอน
+                                                                  45, // กำหนดความสูงของไอคอน
                                                             ),
                                                             Padding(
                                                               padding:
@@ -281,12 +282,12 @@ class _M_PaState extends State<M_Pa> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(25),
                                       child: Card(
-                                        color: Color(0xFF4FCCBD),
+                                        color: Color(0xFFEBA37A),
                                         child: Column(
                                           children: [
                                             Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.all(10),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6, 5, 6, 5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -373,7 +374,7 @@ class _M_PaState extends State<M_Pa> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 20, 10, 20),
+                                                  .fromSTEB(6, 15, 6, 15),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -491,14 +492,14 @@ class _M_PaState extends State<M_Pa> {
                                         Text(
                                           "CHD 10 years risk score",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           "ประเมินความเสี่ยงในการเป็นโรคหลอดเลือดหัวใจภายใน 10 ปี",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 11.5,
                                               fontFamily: 'Kanit'),
                                         ),
@@ -515,7 +516,7 @@ class _M_PaState extends State<M_Pa> {
                                           child: Text(
                                             "คลิกเพื่อดูรายละเอียด",
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: Colors.black,
                                                 fontSize: 11.5,
                                                 fontFamily: 'Kanit',
                                                 decoration:
@@ -575,14 +576,14 @@ class _M_PaState extends State<M_Pa> {
                                         Text(
                                           "Q&A",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontFamily: 'Inter',
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           "สอบถามเกี่ยวกับโรคหลอดเลือดหัวใจ",
                                           style: TextStyle(
-                                              color: Colors.white,
+                                              color: Colors.black,
                                               fontSize: 11.5,
                                               fontFamily: 'Kanit'),
                                         ),
@@ -599,7 +600,7 @@ class _M_PaState extends State<M_Pa> {
                                           child: Text(
                                             "คลิกเพื่อเริ่มสอบถาม",
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: Colors.black,
                                                 fontSize: 11.5,
                                                 fontFamily: 'Kanit',
                                                 decoration:
