@@ -226,9 +226,9 @@ class _M_PaState extends State<M_Pa> {
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
+                                                                          10,
+                                                                          0,
                                                                           5,
-                                                                          0,
-                                                                          0,
                                                                           0),
                                                               child: Text(
                                                                 "คำแนะนำ",
@@ -287,7 +287,7 @@ class _M_PaState extends State<M_Pa> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6, 5, 6, 5),
+                                                  .fromSTEB(7, 5, 7, 5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -313,9 +313,9 @@ class _M_PaState extends State<M_Pa> {
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
+                                                                          10,
+                                                                          0,
                                                                           5,
-                                                                          0,
-                                                                          0,
                                                                           0),
                                                               child: Text(
                                                                 "โปรไฟล์",
@@ -374,7 +374,7 @@ class _M_PaState extends State<M_Pa> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6, 15, 6, 15),
+                                                  .fromSTEB(6, 17.5, 6, 17.5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -392,9 +392,9 @@ class _M_PaState extends State<M_Pa> {
                                                               'images/Icon_Exit.png',
                                                               // ระบุเส้นทางของไอคอนภาพ
                                                               width:
-                                                                  30, // กำหนดความกว้างของไอคอน
+                                                                  25, // กำหนดความกว้างของไอคอน
                                                               height:
-                                                                  30, // กำหนดความสูงของไอคอน
+                                                                  25, // กำหนดความสูงของไอคอน
                                                             ),
                                                             Padding(
                                                               padding:
