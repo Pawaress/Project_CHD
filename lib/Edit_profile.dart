@@ -262,631 +262,782 @@ class _E_PoState extends State<E_Po> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          color: Color(0XFFFFEEDD),
-          //SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Container(
-              color: Color(0XFFFFEEDD),
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-              margin: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 0),
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 30),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
+      resizeToAvoidBottomInset: false,
+      body: LayoutBuilder(
+          builder: (context, constraints) => SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: IntrinsicHeight(
+                      child: Container(
+                    color: Color(0XFFFFEEDD),
+                    //SingleChildScrollView(
+                    child: Form(
+                      key: _formKey,
+                      child: Container(
+                        color: Color(0XFFFFEEDD),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        margin: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 0),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    "แก้ไขบัญชีผู้ใช้",
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontFamily: 'Kanit',
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: Card(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 25, 10, 25),
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                        child: Row(
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 30, 0, 30),
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "ชื่อผู้ใช้",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 20),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(25, 10, 0, 10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10),
-                                                      bottomLeft:
-                                                          Radius.circular(10),
-                                                    ),
-                                                    color: Color(0XFFD9D9D9),
-                                                  ),
-                                                  width: 150,
-                                                  child: TextFormField(
-                                                    validator: (value) {},
-
-                                                    readOnly:
-                                                        checkEditUsername, //ส่วนเช็คว่าพิมได้หรือไม่
-                                                    controller:
-                                                        textEditingControllerUsername, //ส่วนที่ไว้รับค่าจากuser
-                                                    decoration: InputDecoration(
-                                                        border:
-                                                            InputBorder.none,
-                                                        hintText: "",
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10,
-                                                                    14.2,
-                                                                    0,
-                                                                    16)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                ElevatedButton(
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      backgroundColor:
-                                                          Colors.white,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(20, 13,
-                                                                  20, 13),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                        ), // กำหนดความโค้งของมุมปุ่ม
-                                                      ),
-
-                                                      textStyle: TextStyle(
-                                                          fontSize:
-                                                              15), // เปลี่ยนสีปุ่มเป็นสีแดง
-                                                    ),
-                                                    onPressed: () {
-                                                      //Navigator.of(context).pop();
-                                                      // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
-                                                      setState(() {
-                                                        //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                        checkEditUsername =
-                                                            !checkEditUsername;
-                                                      });
-                                                    },
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        // เมื่อไอคอนถูกแตะ
-                                                        setState(() {
-                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                          checkEditUsername =
-                                                              !checkEditUsername;
-                                                        }); // ใช้ Navigator.pop เพื่อย้อนกลับไปยังหน้าก่อนหน้านี้
-                                                      },
-                                                      child: Icon(
-                                                        Icons.edit,
-                                                        color: Colors.grey,
-                                                      ),
-                                                    )),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                        child: Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "Email",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Inters',
-                                                      fontSize: 20),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(25, 10, 0, 10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10),
-                                                      bottomLeft:
-                                                          Radius.circular(10),
-                                                    ),
-                                                    color: Color(0XFFD9D9D9),
-                                                  ),
-                                                  width: 150,
-                                                  child: TextFormField(
-                                                    validator: (value) {},
-                                                    readOnly:
-                                                        checkEditEmail, //ส่วนเช็คว่าพิมได้หรือไม่
-                                                    controller:
-                                                        textEditingControllerEmail, //ส่วนที่ไว้รับค่าจากuser
-                                                    decoration: InputDecoration(
-                                                        border:
-                                                            InputBorder.none,
-                                                        hintText: "ชิมมินกยู",
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10,
-                                                                    14.2,
-                                                                    0,
-                                                                    16)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                ElevatedButton(
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      backgroundColor:
-                                                          Colors.white,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(20, 13,
-                                                                  20, 13),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                        ), // กำหนดความโค้งของมุมปุ่ม
-                                                      ),
-
-                                                      textStyle: TextStyle(
-                                                          fontSize:
-                                                              15), // เปลี่ยนสีปุ่มเป็นสีแดง
-                                                    ),
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                        checkEditEmail =
-                                                            !checkEditEmail;
-                                                      });
-                                                    },
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        // เมื่อไอคอนถูกแตะ
-                                                        setState(() {
-                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                          checkEditEmail =
-                                                              !checkEditEmail;
-                                                        }); // ใช้ Navigator.pop เพื่อย้อนกลับไปยังหน้าก่อนหน้านี้
-                                                      },
-                                                      child: Icon(
-                                                        Icons.edit,
-                                                        color: Colors.grey,
-                                                      ),
-                                                    )),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 0, 0, 0),
-                                        child: Row(
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "รหัสผ่าน",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 20),
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsetsDirectional
-                                                      .fromSTEB(10, 10, 0, 10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10),
-                                                      bottomLeft:
-                                                          Radius.circular(10),
-                                                    ),
-                                                    color: Color(0XFFD9D9D9),
-                                                  ),
-                                                  width: 150,
-                                                  child: TextFormField(
-                                                    validator: (value) {},
-                                                    onChanged: (value) {
-                                                      setState(() {
-                                                        if (textEditingControllerPassword
-                                                                .text !=
-                                                            textEditingControllerPassword2
-                                                                .text) {
-                                                          textEditingControllerCheckPassword
-                                                                  .text =
-                                                              "* รหัสผ่านไม่ถูกต้อง";
-                                                        } else {
-                                                          textEditingControllerCheckPassword
-                                                              .text = "";
-                                                        }
-                                                      });
-                                                    },
-                                                    readOnly:
-                                                        checkEditPassword, //ส่วนเช็คว่าพิมได้หรือไม่
-                                                    obscureText:
-                                                        true, //เป็นส่วนไว้สำหรับปิดรหัส
-                                                    controller:
-                                                        textEditingControllerPassword, //ส่วนที่ไว้รับค่าจากuser
-                                                    decoration: InputDecoration(
-                                                        border:
-                                                            InputBorder.none,
-                                                        hintText:
-                                                            //เงื่อนไขเช็ค เมื่อเปิดหน้านี้มา จะแสดง เป็น **** ก่อน เมื่อกดIcon edit จะเป็นคำว่าpasswod
-                                                            checkEditPassword
-                                                                ? '********'
-                                                                : 'Password', //ค่า password ปัจุบันก่อนแก้ไข
-
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10,
-                                                                    14.2,
-                                                                    0,
-                                                                    16)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                ElevatedButton(
-                                                    style: ElevatedButton
-                                                        .styleFrom(
-                                                      backgroundColor:
-                                                          Colors.white,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(20, 13,
-                                                                  20, 13),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10),
-                                                        ), // กำหนดความโค้งของมุมปุ่ม
-                                                      ),
-
-                                                      textStyle: TextStyle(
-                                                          fontSize:
-                                                              15), // เปลี่ยนสีปุ่มเป็นสีแดง
-                                                    ),
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                        checkEditPassword =
-                                                            !checkEditPassword;
-                                                      });
-                                                    },
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        // เมื่อไอคอนถูกแตะ
-                                                        setState(() {
-                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                          checkEditPassword =
-                                                              !checkEditPassword;
-                                                        });
-                                                      },
-                                                      child: Icon(
-                                                        Icons.edit,
-                                                        color: Colors.grey,
-                                                      ),
-                                                    )),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Visibility(
-                                        visible: !checkEditPassword,
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10, 0, 0, 0),
-                                          child: Row(
-                                            children: [
-                                              Column(
-                                                children: [
-                                                  Text(
-                                                    "ยืนยันรหัสผ่าน",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Kanit',
-                                                        fontSize: 20),
-                                                  )
-                                                ],
+                                            Text(
+                                              "แก้ไขบัญชีผู้ใช้",
+                                              style: TextStyle(
+                                                fontSize: 24,
+                                                fontFamily: 'Kanit',
                                               ),
-                                              Column(
-                                                children: [
-                                                  Container(
-                                                    margin:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10, 10, 0, 10),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topLeft:
-                                                            Radius.circular(10),
-                                                        bottomLeft:
-                                                            Radius.circular(10),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: Card(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10, 25, 10, 25),
+                                            child: Column(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 0, 0),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                            "ชื่อผู้ใช้",
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 20),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      color: Color(0XFFD9D9D9),
-                                                    ),
-                                                    width: 100,
-                                                    child: TextFormField(
-                                                      validator: (value) {},
-                                                      onChanged: (value) {
-                                                        setState(() {
-                                                          if (textEditingControllerPassword
-                                                                  .text !=
-                                                              textEditingControllerPassword2
-                                                                  .text) {
-                                                            textEditingControllerCheckPassword
-                                                                    .text =
-                                                                "* รหัสผ่านไม่ถูกต้อง";
-                                                          } else {
-                                                            textEditingControllerCheckPassword
-                                                                .text = "";
-                                                          }
-                                                        });
-                                                      },
-                                                      readOnly:
-                                                          checkEditPassword2, //ส่วนเช็คว่าพิมได้หรือไม่
-                                                      obscureText:
-                                                          true, //เป็นส่วนไว้สำหรับปิดรหัส
-                                                      controller:
-                                                          textEditingControllerPassword2, //ส่วนที่ไว้รับค่าจากuser
-                                                      decoration:
-                                                          InputDecoration(
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-                                                              hintText:
-                                                                  //เงื่อนไขเช็ค เมื่อเปิดหน้านี้มา จะแสดง เป็น **** ก่อน เมื่อกดIcon edit จะเป็นคำว่าpasswod
-                                                                  checkEditPassword2
-                                                                      ? '********'
-                                                                      : 'Password', //ค่า password ปัจุบันก่อนแก้ไข
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10, 0, 0, 0),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                              ),
+                                                              color: Color(
+                                                                  0XFFD9D9D9),
+                                                            ),
+                                                            width: 220,
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
 
-                                                              contentPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
+                                                              readOnly:
+                                                                  checkEditUsername, //ส่วนเช็คว่าพิมได้หรือไม่
+                                                              controller:
+                                                                  textEditingControllerUsername, //ส่วนที่ไว้รับค่าจากuser
+                                                              decoration: InputDecoration(
+                                                                  border:
+                                                                      InputBorder
+                                                                          .none,
+                                                                  hintText: "",
+                                                                  contentPadding:
+                                                                      EdgeInsetsDirectional.fromSTEB(
                                                                           10,
                                                                           14.2,
                                                                           0,
                                                                           16)),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Column(
-                                                children: [
-                                                  ElevatedButton(
-                                                      style: ElevatedButton
-                                                          .styleFrom(
-                                                        backgroundColor:
-                                                            Colors.white,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(20,
-                                                                    13, 20, 13),
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    10),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    10),
-                                                          ), // กำหนดความโค้งของมุมปุ่ม
-                                                        ),
-
-                                                        textStyle: TextStyle(
-                                                            fontSize:
-                                                                15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                      onPressed: () {
-                                                        setState(() {
-                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                          checkEditPassword2 =
-                                                              !checkEditPassword2;
-                                                        });
-                                                      },
-                                                      child: InkWell(
-                                                        onTap: () {
-                                                          // เมื่อไอคอนถูกแตะ
-                                                          setState(() {
-                                                            //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
-                                                            checkEditPassword2 =
-                                                                !checkEditPassword2;
-                                                          });
-                                                        },
-                                                        child: Icon(
-                                                          Icons.edit,
-                                                          color: Colors.grey,
+                                                      Column(
+                                                        children: [
+                                                          ElevatedButton(
+                                                              style:
+                                                                  ElevatedButton
+                                                                      .styleFrom(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20,
+                                                                            13,
+                                                                            20,
+                                                                            13),
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            10),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            10),
+                                                                  ), // กำหนดความโค้งของมุมปุ่ม
+                                                                ),
+
+                                                                textStyle: TextStyle(
+                                                                    fontSize:
+                                                                        15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                              ),
+                                                              onPressed: () {
+                                                                //Navigator.of(context).pop();
+                                                                // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
+                                                                setState(() {
+                                                                  //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                  checkEditUsername =
+                                                                      !checkEditUsername;
+                                                                });
+                                                              },
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  // เมื่อไอคอนถูกแตะ
+                                                                  setState(() {
+                                                                    //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                    checkEditUsername =
+                                                                        !checkEditUsername;
+                                                                  }); // ใช้ Navigator.pop เพื่อย้อนกลับไปยังหน้าก่อนหน้านี้
+                                                                },
+                                                                child: Icon(
+                                                                  Icons.edit,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                ),
+                                                              )),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 0, 0),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                            "Email",
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'Inters',
+                                                                fontSize: 20),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10, 0, 0, 0),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                              ),
+                                                              color: Color(
+                                                                  0XFFD9D9D9),
+                                                            ),
+                                                            width: 220,
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              readOnly:
+                                                                  checkEditEmail, //ส่วนเช็คว่าพิมได้หรือไม่
+                                                              controller:
+                                                                  textEditingControllerEmail, //ส่วนที่ไว้รับค่าจากuser
+                                                              decoration: InputDecoration(
+                                                                  border:
+                                                                      InputBorder
+                                                                          .none,
+                                                                  hintText:
+                                                                      "ชิมมินกยู",
+                                                                  contentPadding:
+                                                                      EdgeInsetsDirectional.fromSTEB(
+                                                                          10,
+                                                                          14.2,
+                                                                          0,
+                                                                          16)),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          ElevatedButton(
+                                                              style:
+                                                                  ElevatedButton
+                                                                      .styleFrom(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20,
+                                                                            13,
+                                                                            20,
+                                                                            13),
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            10),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            10),
+                                                                  ), // กำหนดความโค้งของมุมปุ่ม
+                                                                ),
+
+                                                                textStyle: TextStyle(
+                                                                    fontSize:
+                                                                        15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                              ),
+                                                              onPressed: () {
+                                                                setState(() {
+                                                                  //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                  checkEditEmail =
+                                                                      !checkEditEmail;
+                                                                });
+                                                              },
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  // เมื่อไอคอนถูกแตะ
+                                                                  setState(() {
+                                                                    //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                    checkEditEmail =
+                                                                        !checkEditEmail;
+                                                                  }); // ใช้ Navigator.pop เพื่อย้อนกลับไปยังหน้าก่อนหน้านี้
+                                                                },
+                                                                child: Icon(
+                                                                  Icons.edit,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                ),
+                                                              )),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20, 0, 0, 0),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Text(
+                                                            "รหัสผ่าน",
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 20),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10, 0, 0, 0),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10,
+                                                                        10,
+                                                                        0,
+                                                                        10),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        10),
+                                                              ),
+                                                              color: Color(
+                                                                  0XFFD9D9D9),
+                                                            ),
+                                                            width: 220,
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              onChanged:
+                                                                  (value) {
+                                                                setState(() {
+                                                                  if (textEditingControllerPassword
+                                                                          .text !=
+                                                                      textEditingControllerPassword2
+                                                                          .text) {
+                                                                    textEditingControllerCheckPassword
+                                                                            .text =
+                                                                        "* รหัสผ่านไม่ถูกต้อง";
+                                                                  } else {
+                                                                    textEditingControllerCheckPassword
+                                                                        .text = "";
+                                                                  }
+                                                                });
+                                                              },
+                                                              readOnly:
+                                                                  checkEditPassword, //ส่วนเช็คว่าพิมได้หรือไม่
+                                                              obscureText:
+                                                                  true, //เป็นส่วนไว้สำหรับปิดรหัส
+                                                              controller:
+                                                                  textEditingControllerPassword, //ส่วนที่ไว้รับค่าจากuser
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                      border: InputBorder
+                                                                          .none,
+                                                                      hintText:
+                                                                          //เงื่อนไขเช็ค เมื่อเปิดหน้านี้มา จะแสดง เป็น **** ก่อน เมื่อกดIcon edit จะเป็นคำว่าpasswod
+                                                                          checkEditPassword
+                                                                              ? '********'
+                                                                              : 'Password', //ค่า password ปัจุบันก่อนแก้ไข
+
+                                                                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10,
+                                                                          14.2,
+                                                                          0,
+                                                                          16)),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          ElevatedButton(
+                                                              style:
+                                                                  ElevatedButton
+                                                                      .styleFrom(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20,
+                                                                            13,
+                                                                            20,
+                                                                            13),
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            10),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            10),
+                                                                  ), // กำหนดความโค้งของมุมปุ่ม
+                                                                ),
+
+                                                                textStyle: TextStyle(
+                                                                    fontSize:
+                                                                        15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                              ),
+                                                              onPressed: () {
+                                                                setState(() {
+                                                                  //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                  checkEditPassword =
+                                                                      !checkEditPassword;
+                                                                });
+                                                              },
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  // เมื่อไอคอนถูกแตะ
+                                                                  setState(() {
+                                                                    //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                    checkEditPassword =
+                                                                        !checkEditPassword;
+                                                                  });
+                                                                },
+                                                                child: Icon(
+                                                                  Icons.edit,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                ),
+                                                              )),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Visibility(
+                                                    visible: !checkEditPassword,
+                                                    child: Column(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(20,
+                                                                      0, 0, 0),
+                                                          child: Row(
+                                                            children: [
+                                                              Column(
+                                                                children: [
+                                                                  Text(
+                                                                    "ยืนยันรหัสผ่าน",
+                                                                    style: TextStyle(
+                                                                        fontFamily:
+                                                                            'Kanit',
+                                                                        fontSize:
+                                                                            20),
+                                                                  )
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
-                                                      )),
-                                                ],
-                                              )
-                                            ],
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(10,
+                                                                      0, 0, 0),
+                                                          child: Row(
+                                                            children: [
+                                                              Column(
+                                                                children: [
+                                                                  Container(
+                                                                    margin: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10,
+                                                                            10,
+                                                                            0,
+                                                                            10),
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        topLeft:
+                                                                            Radius.circular(10),
+                                                                        bottomLeft:
+                                                                            Radius.circular(10),
+                                                                      ),
+                                                                      color: Color(
+                                                                          0XFFD9D9D9),
+                                                                    ),
+                                                                    width: 220,
+                                                                    child:
+                                                                        TextFormField(
+                                                                      validator:
+                                                                          (value) {},
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        setState(
+                                                                            () {
+                                                                          if (textEditingControllerPassword.text !=
+                                                                              textEditingControllerPassword2.text) {
+                                                                            textEditingControllerCheckPassword.text =
+                                                                                "* รหัสผ่านไม่ถูกต้อง";
+                                                                          } else {
+                                                                            textEditingControllerCheckPassword.text =
+                                                                                "";
+                                                                          }
+                                                                        });
+                                                                      },
+                                                                      readOnly:
+                                                                          checkEditPassword2, //ส่วนเช็คว่าพิมได้หรือไม่
+                                                                      obscureText:
+                                                                          true, //เป็นส่วนไว้สำหรับปิดรหัส
+                                                                      controller:
+                                                                          textEditingControllerPassword2, //ส่วนที่ไว้รับค่าจากuser
+                                                                      decoration: InputDecoration(
+                                                                          border: InputBorder.none,
+                                                                          hintText:
+                                                                              //เงื่อนไขเช็ค เมื่อเปิดหน้านี้มา จะแสดง เป็น **** ก่อน เมื่อกดIcon edit จะเป็นคำว่าpasswod
+                                                                              checkEditPassword2 ? '********' : 'Password', //ค่า password ปัจุบันก่อนแก้ไข
+
+                                                                          contentPadding: EdgeInsetsDirectional.fromSTEB(10, 14.2, 0, 16)),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Column(
+                                                                children: [
+                                                                  ElevatedButton(
+                                                                      style: ElevatedButton
+                                                                          .styleFrom(
+                                                                        backgroundColor:
+                                                                            Colors.white,
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            20,
+                                                                            13,
+                                                                            20,
+                                                                            13),
+                                                                        shape:
+                                                                            RoundedRectangleBorder(
+                                                                          borderRadius:
+                                                                              BorderRadius.only(
+                                                                            topRight:
+                                                                                Radius.circular(10),
+                                                                            bottomRight:
+                                                                                Radius.circular(10),
+                                                                          ), // กำหนดความโค้งของมุมปุ่ม
+                                                                        ),
+
+                                                                        textStyle:
+                                                                            TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                                                      ),
+                                                                      onPressed:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                          checkEditPassword2 =
+                                                                              !checkEditPassword2;
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          InkWell(
+                                                                        onTap:
+                                                                            () {
+                                                                          // เมื่อไอคอนถูกแตะ
+                                                                          setState(
+                                                                              () {
+                                                                            //เงื่อนไขเช็ค เมื่อกดปุ่ม Icon ทำให้ กลับค่า true->false false->true เพื่อใช้เช็คว่าแก้ไขได้หรือไม่
+                                                                            checkEditPassword2 =
+                                                                                !checkEditPassword2;
+                                                                          });
+                                                                        },
+                                                                        child:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .edit,
+                                                                          color:
+                                                                              Colors.grey,
+                                                                        ),
+                                                                      )),
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )),
+                                                Visibility(
+                                                    visible:
+                                                        textEditingControllerPassword
+                                                                .text !=
+                                                            textEditingControllerPassword2
+                                                                .text,
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20, 0, 0, 0),
+                                                      child: Row(
+                                                        children: [
+                                                          Text(
+                                                            textEditingControllerCheckPassword
+                                                                .text,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'Kanit',
+                                                                fontSize: 17,
+                                                                color:
+                                                                    Colors.red),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ))
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 30, 0, 30),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF4FCCBD),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30, 13, 30, 13),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                  15), // กำหนดความโค้งของมุมปุ่ม
+                                            ),
+
+                                            textStyle: TextStyle(
+                                                fontSize:
+                                                    15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                                          ),
+                                          onPressed: () {
+                                            // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
+                                            if (textEditingControllerPassword
+                                                    .text !=
+                                                textEditingControllerPassword2
+                                                    .text) {
+                                              _showAlertDialogsErrorSaveData(
+                                                  context);
+                                            } else {
+                                              _showAlertDialogsSaveData(
+                                                  context);
+                                            }
+                                          },
+                                          child: Text(
+                                            'บันทึกข้อมูล',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily: 'Kanit',
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Visibility(
-                                          visible: textEditingControllerPassword
-                                                  .text !=
-                                              textEditingControllerPassword2
-                                                  .text,
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 0, 20, 50),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            if (textEditingControllerPassword
+                                                        .text !=
+                                                    textEditingControllerPasswordOriginal ||
+                                                textEditingControllerPassword2
+                                                        .text !=
+                                                    textEditingControllerPassword2Original ||
+                                                textEditingControllerEmail
+                                                        .text !=
+                                                    textEditingControllerEmailOriginal ||
+                                                textEditingControllerUsername
+                                                        .text !=
+                                                    textEditingControllerUsernameOriginal) {
+                                              _showAlertDialogsErrorSaveData(
+                                                  context);
+                                            } else {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => M_Pa(),
+                                                  //ลิ้งไปหน้า home page
+                                                ),
+                                              );
+                                            }
+                                          },
                                           child: Text(
-                                            textEditingControllerCheckPassword
-                                                .text,
+                                            "กลับสู่หน้าหลัก",
                                             style: TextStyle(
-                                                fontFamily: 'Kanit',
-                                                fontSize: 17,
-                                                color: Colors.red),
-                                          ))
-                                    ],
+                                              color:
+                                                  Color.fromARGB(255, 0, 0, 0),
+                                              fontSize: 20,
+                                              fontFamily: 'Kanit',
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 30),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFF4FCCBD),
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      30, 13, 30, 13),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        15), // กำหนดความโค้งของมุมปุ่ม
-                                  ),
-
-                                  textStyle: TextStyle(
-                                      fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
-                                ),
-                                onPressed: () {
-                                  // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกกด
-                                  _showAlertDialogsSaveData(context);
-                                },
-                                child: Text(
-                                  'บันทึกข้อมูล',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Kanit',
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  if (textEditingControllerPassword.text !=
-                                          textEditingControllerPasswordOriginal ||
-                                      textEditingControllerPassword2.text !=
-                                          textEditingControllerPassword2Original ||
-                                      textEditingControllerEmail.text !=
-                                          textEditingControllerEmailOriginal ||
-                                      textEditingControllerUsername.text !=
-                                          textEditingControllerUsernameOriginal) {
-                                    _showAlertDialogsErrorSaveData(context);
-                                  } else {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => M_Pa(),
-                                        //ลิ้งไปหน้า home page
-                                      ),
-                                    );
-                                  }
-                                },
-                                child: Text(
-                                  "กลับสู่หน้าหลัก",
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                    fontSize: 20,
-                                    fontFamily: 'Kanit',
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ));
+                  )),
+                ),
+              )),
+    );
   }
 }
