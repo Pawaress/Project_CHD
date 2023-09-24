@@ -87,7 +87,14 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
 
   //ตัวแปรนี้มีไว้เก็บค่า ระกับการศึกษา จะมี 4 ค่าตามคือ 1 2 3 4 ของ radio ที่เราเลือก สามารถแก้ค่า ทั้ง 4 ได้ในบรรทัดตามลำดับดังนี้ 542 575 608 641
   int EducationLevel = 0;
+  bool BoolCheckSomkingVisible = false;
 
+  bool BoolCheckCholesterolVisible = false;
+  bool BoolCheckGlucoseVisible = false;
+  bool BoolCheckHRVisible = false;
+  bool BoolCheckBMIVisible = false;
+  bool BoolCheckSYSVisible = false;
+  bool BoolCheckDIAVisible = false;
   //---------------------------------------------------------------------------------------------------------------------------
   @override
   void initState() {
@@ -102,6 +109,109 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
     setState(() {
       EducationLevel = val;
     });
+  }
+
+  void _showAlertDialogsErrorSaveData(BuildContext context) {
+    //ฟังก์ชันแสดงตัวAlert
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return (Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AlertDialog(
+              backgroundColor: Color(0XFFD9D9D9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              titlePadding: const EdgeInsets.all(0),
+              title: Container(
+                  padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "แจ้งเตือนผู้ใช้", //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                        style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              content: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Wrap(
+                      children: <Widget>[
+                        Text(
+                          "กรุณากรอกข้อมูลให้เรียบร้อยและตรงตามเงื่อนไข",
+                          textAlign: TextAlign
+                              .center, //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                          style: TextStyle(
+                              fontFamily: 'kanit',
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              /*actions: [
+            TextButton(onPressed: () {}, child: Text("yes")),
+            TextButton(onPressed: () {}, child: Text("no"))
+          ],*/
+
+              //elevation: 24,
+              //backgroundColor: Colors.blue,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFD9D9D9),
+                      padding: EdgeInsetsDirectional.fromSTEB(35, 10, 35, 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), // กำหนดความโค้งของมุมปุ่ม
+                      ),
+
+                      textStyle:
+                          TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                    },
+                    child: Text(
+                      'OK',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+      },
+    );
   }
 
   @override
@@ -742,6 +852,19 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                           "มีประวัติสูบบุหรี่ = $smoke");
                                                     } else {
                                                       smoke = 0;
+
+                                                      setState(() {
+                                                        textEditingControllerSmokeperday
+                                                            .text = "0";
+                                                        smokeperday = int.parse(
+                                                            textEditingControllerSmokeperday
+                                                                .text);
+                                                        setState(
+                                                          () => smokeperdayslider =
+                                                              0, //รับค่าจากslider มาใน agelider
+                                                        );
+                                                      });
+
                                                       print(
                                                           "ไม่มีมีประวัติสูบบุหรี่ = $smoke");
                                                     }
@@ -788,6 +911,15 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                   value: smokeperdayslider,
                                                   onChanged: (newRating) {
                                                     if (smoke == 0) {
+                                                      //เพิ่มล่าสุดตรงนี้
+
+                                                      setState(() {
+                                                        //รับค่าจาก slider มาใน textEditingController ของ textfleid เพื่อแสดงค่าปัจุบันให้ user เห็น
+
+                                                        BoolCheckSomkingVisible =
+                                                            true;
+                                                      });
+                                                      //จบการเพิ่มล่าสุด
                                                       return null;
                                                     }
                                                     setState(
@@ -821,6 +953,8 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       27, // กำหนดความกว้างที่คุณต้องการ
                                                   child: TextFormField(
                                                     validator: (value) {},
+                                                    readOnly:
+                                                        BoolCheckSomkingVisible,
                                                     controller:
                                                         textEditingControllerSmokeperday,
                                                     keyboardType:
@@ -1346,489 +1480,821 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Card(
-                                child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10, 10, 10, 10),
-                              child: Column(
-                                children: [
-                                  //Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0,0, 0),)
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                              borderRadius: BorderRadius.circular(30),
+                              child: Card(
+                                  child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10, 10, 10, 10),
+                                child: Column(
+                                  children: [
+                                    //Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0,0, 0),)
 
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 0),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "ระดับคอเลสเตอรอลในเลือด",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 15),
-                                                )
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(10, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                        color:
-                                                            Color(0XFFD9D9D9),
-                                                        height: 39,
-                                                        width:
-                                                            70, // กำหนดความกว้างที่คุณต้องการ
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(15,
-                                                                      0, 15, 0),
-                                                          child: TextFormField(
-                                                            validator: (value) {
-                                                              setState(() {
-                                                                Cholesterol = double
-                                                                    .parse(value
-                                                                        .toString());
-                                                              });
-                                                            },
-                                                            controller:
-                                                                textEditingControllerCholesterol,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              hintText:
-                                                                  "$Cholesterol",
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-
-                                                              //textEditingControllerAge
-                                                            ),
-                                                            // ค่าอื่น ๆ ของ TextField
-                                                          ),
-                                                        )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
-                                              child: Column(
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 0),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
                                                 children: [
                                                   Text(
-                                                    "mg/dL",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 15),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ])),
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 0),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "ระดับความดันโลหิตตัวบน",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 15),
-                                                )
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(25, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                        color:
-                                                            Color(0XFFD9D9D9),
-                                                        height: 39,
-                                                        width:
-                                                            70, // กำหนดความกว้างที่คุณต้องการ
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(15,
-                                                                      0, 15, 0),
-                                                          child: TextFormField(
-                                                            validator:
-                                                                (value) {},
-                                                            controller:
-                                                                textEditingControllerSYS,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              hintText: "$SYS",
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-
-                                                              //textEditingControllerAge
-                                                            ),
-                                                            // ค่าอื่น ๆ ของ TextField
-                                                          ),
-                                                        )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "mmHg",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 15),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ])),
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 0),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "ระดับความดันโลหิตตัวล่าง",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 15),
-                                                )
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(20, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                        color:
-                                                            Color(0XFFD9D9D9),
-                                                        height: 39,
-                                                        width:
-                                                            70, // กำหนดความกว้างที่คุณต้องการ
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(15,
-                                                                      0, 15, 0),
-                                                          child: TextFormField(
-                                                            validator:
-                                                                (value) {},
-                                                            controller:
-                                                                textEditingControllerDIA,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              hintText: "$DIA",
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-
-                                                              //textEditingControllerAge
-                                                            ),
-                                                            // ค่าอื่น ๆ ของ TextField
-                                                          ),
-                                                        )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "mmHg",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 15),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ])),
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 0),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "ดัชนีมวลกาย (BMI)",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 15),
-                                                )
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(60, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                        color:
-                                                            Color(0XFFD9D9D9),
-                                                        height: 39,
-                                                        width:
-                                                            70, // กำหนดความกว้างที่คุณต้องการ
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(15,
-                                                                      0, 15, 0),
-                                                          child: TextFormField(
-                                                            validator:
-                                                                (value) {},
-                                                            controller:
-                                                                textEditingControllerBMI,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              hintText: "$BMI",
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-
-                                                              //textEditingControllerAge
-                                                            ),
-                                                            // ค่าอื่น ๆ ของ TextField
-                                                          ),
-                                                        )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "Kg/m",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Inter',
-                                                        fontSize: 15),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ])),
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 0),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "อัตราการเต้นของหัวใจ",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 15),
-                                                )
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(35, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                        color:
-                                                            Color(0XFFD9D9D9),
-                                                        height: 39,
-                                                        width:
-                                                            70, // กำหนดความกว้างที่คุณต้องการ
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(15,
-                                                                      0, 10, 0),
-                                                          child: TextFormField(
-                                                            validator:
-                                                                (value) {},
-                                                            controller:
-                                                                textEditingControllerHR,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              hintText: "$HR",
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-
-                                                              //textEditingControllerAge
-                                                            ),
-                                                            // ค่าอื่น ๆ ของ TextField
-                                                          ),
-                                                        )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "ครั้ง/นาที",
+                                                    "ระดับคอเลสเตอรอลในเลือด",
                                                     style: TextStyle(
                                                         fontFamily: 'Kanit',
-                                                        fontSize: 13),
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ])),
-                                  Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 10, 10, 10),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  "ปริมาณกลูโคส",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Kanit',
-                                                      fontSize: 15),
-                                                )
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(80, 0, 10, 0),
-                                              child: Column(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    child: Container(
-                                                        color:
-                                                            Color(0XFFD9D9D9),
-                                                        height: 39,
-                                                        width:
-                                                            70, // กำหนดความกว้างที่คุณต้องการ
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(15,
-                                                                      0, 15, 0),
-                                                          child: TextFormField(
-                                                            validator:
-                                                                (value) {},
-                                                            controller:
-                                                                textEditingControllerGlucose,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .number,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              hintText:
-                                                                  "$Glucose",
-                                                              border:
-                                                                  InputBorder
-                                                                      .none,
-
-                                                              //textEditingControllerAge
-                                                            ),
-                                                            // ค่าอื่น ๆ ของ TextField
-                                                          ),
-                                                        )),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0, 0, 0, 0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "mg/dL",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Inter',
                                                         fontSize: 15),
                                                   )
                                                 ],
                                               ),
-                                            )
-                                          ])),
-                                ],
-                              ),
-                            )))
-                      ],
-                    ),
-                  ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(10, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Container(
+                                                          color:
+                                                              Color(0XFFD9D9D9),
+                                                          height: 39,
+                                                          width:
+                                                              70, // กำหนดความกว้างที่คุณต้องการ
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15,
+                                                                        0,
+                                                                        15,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {
+                                                                setState(() {
+                                                                  Cholesterol =
+                                                                      double.parse(
+                                                                          value
+                                                                              .toString());
+                                                                });
+                                                              },
+                                                              onChanged:
+                                                                  (value) => {
+                                                                if (value == "")
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckCholesterolVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                                else if (int.parse(textEditingControllerCholesterol
+                                                                            .text) >=
+                                                                        100 &&
+                                                                    int.parse(textEditingControllerCholesterol
+                                                                            .text) <=
+                                                                        350)
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckCholesterolVisible =
+                                                                          false;
+                                                                    })
+                                                                  }
+                                                                else
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckCholesterolVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                              },
+                                                              controller:
+                                                                  textEditingControllerCholesterol,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText:
+                                                                    "$Cholesterol",
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+
+                                                                //textEditingControllerAge
+                                                              ),
+                                                              // ค่าอื่น ๆ ของ TextField
+                                                            ),
+                                                          )),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "mg/dL",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 15),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ])),
+                                    Visibility(
+                                        visible: BoolCheckCholesterolVisible,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "* กรุณาใส่ข้อมูลให้เลขอยู่ในช่วง 100 ถึง 350",
+                                                style: TextStyle(
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 15,
+                                                    color: Colors.red),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 0),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "ระดับความดันโลหิตตัวบน",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(25, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Container(
+                                                          color:
+                                                              Color(0XFFD9D9D9),
+                                                          height: 39,
+                                                          width:
+                                                              70, // กำหนดความกว้างที่คุณต้องการ
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15,
+                                                                        0,
+                                                                        15,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              onChanged:
+                                                                  (value) => {
+                                                                if (value == "")
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckSYSVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                                else if (int.parse(textEditingControllerSYS
+                                                                            .text) >=
+                                                                        80 &&
+                                                                    int.parse(textEditingControllerSYS
+                                                                            .text) <=
+                                                                        300)
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckSYSVisible =
+                                                                          false;
+                                                                    })
+                                                                  }
+                                                                else
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckSYSVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                              },
+                                                              controller:
+                                                                  textEditingControllerSYS,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText:
+                                                                    "$SYS",
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+
+                                                                //textEditingControllerAge
+                                                              ),
+                                                              // ค่าอื่น ๆ ของ TextField
+                                                            ),
+                                                          )),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "mmHg",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 15),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ])),
+                                    Visibility(
+                                        visible: BoolCheckSYSVisible,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "* กรุณาใส่ข้อมูลให้เลขอยู่ในช่วง 80 ถึง 300",
+                                                style: TextStyle(
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 15,
+                                                    color: Colors.red),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 0),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "ระดับความดันโลหิตตัวล่าง",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(20, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Container(
+                                                          color:
+                                                              Color(0XFFD9D9D9),
+                                                          height: 39,
+                                                          width:
+                                                              70, // กำหนดความกว้างที่คุณต้องการ
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15,
+                                                                        0,
+                                                                        15,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              onChanged:
+                                                                  (value) => {
+                                                                if (value == "")
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckDIAVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                                else if (int.parse(textEditingControllerDIA
+                                                                            .text) >=
+                                                                        40 &&
+                                                                    int.parse(textEditingControllerDIA
+                                                                            .text) <=
+                                                                        150)
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckDIAVisible =
+                                                                          false;
+                                                                    })
+                                                                  }
+                                                                else
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckDIAVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                              },
+
+                                                              controller:
+                                                                  textEditingControllerDIA,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText:
+                                                                    "$DIA",
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+
+                                                                //textEditingControllerAge
+                                                              ),
+                                                              // ค่าอื่น ๆ ของ TextField
+                                                            ),
+                                                          )),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "mmHg",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 15),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ])),
+                                    Visibility(
+                                        visible: BoolCheckDIAVisible,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "* กรุณาใส่ข้อมูลให้เลขอยู่ในช่วง 40 ถึง 150",
+                                                style: TextStyle(
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 15,
+                                                    color: Colors.red),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 0),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "ดัชนีมวลกาย (BMI)",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(60, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Container(
+                                                          color:
+                                                              Color(0XFFD9D9D9),
+                                                          height: 39,
+                                                          width:
+                                                              70, // กำหนดความกว้างที่คุณต้องการ
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15,
+                                                                        0,
+                                                                        15,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              onChanged:
+                                                                  (value) => {
+                                                                if (value == "")
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckBMIVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                                else if (int.parse(textEditingControllerBMI
+                                                                            .text) >=
+                                                                        10 &&
+                                                                    int.parse(textEditingControllerBMI
+                                                                            .text) <=
+                                                                        40)
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckBMIVisible =
+                                                                          false;
+                                                                    })
+                                                                  }
+                                                                else
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckBMIVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                              },
+                                                              controller:
+                                                                  textEditingControllerBMI,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText:
+                                                                    "$BMI",
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+
+                                                                //textEditingControllerAge
+                                                              ),
+                                                              // ค่าอื่น ๆ ของ TextField
+                                                            ),
+                                                          )),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "Kg/m",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 15),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ])),
+                                    Visibility(
+                                        visible: BoolCheckBMIVisible,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "* กรุณาใส่ข้อมูลให้เลขอยู่ในช่วง 10 ถึง 40",
+                                                style: TextStyle(
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 15,
+                                                    color: Colors.red),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 0),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "อัตราการเต้นของหัวใจ",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(35, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Container(
+                                                          color:
+                                                              Color(0XFFD9D9D9),
+                                                          height: 39,
+                                                          width:
+                                                              70, // กำหนดความกว้างที่คุณต้องการ
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15,
+                                                                        0,
+                                                                        10,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              onChanged:
+                                                                  (value) => {
+                                                                if (value == "")
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckHRVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                                else if (int.parse(textEditingControllerHR
+                                                                            .text) >=
+                                                                        40 &&
+                                                                    int.parse(textEditingControllerHR
+                                                                            .text) <=
+                                                                        150)
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckHRVisible =
+                                                                          false;
+                                                                    })
+                                                                  }
+                                                                else
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckHRVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                              },
+                                                              controller:
+                                                                  textEditingControllerHR,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText: "$HR",
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+
+                                                                //textEditingControllerAge
+                                                              ),
+                                                              // ค่าอื่น ๆ ของ TextField
+                                                            ),
+                                                          )),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "ครั้ง/นาที",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Kanit',
+                                                          fontSize: 13),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ])),
+                                    Visibility(
+                                        visible: BoolCheckHRVisible,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "* กรุณาใส่ข้อมูลให้เลขอยู่ในช่วง 40 ถึง 150",
+                                                style: TextStyle(
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 15,
+                                                    color: Colors.red),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 10, 10, 0),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Text(
+                                                    "ปริมาณกลูโคส",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Kanit',
+                                                        fontSize: 15),
+                                                  )
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(80, 0, 10, 0),
+                                                child: Column(
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      child: Container(
+                                                          color:
+                                                              Color(0XFFD9D9D9),
+                                                          height: 39,
+                                                          width:
+                                                              70, // กำหนดความกว้างที่คุณต้องการ
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15,
+                                                                        0,
+                                                                        15,
+                                                                        0),
+                                                            child:
+                                                                TextFormField(
+                                                              validator:
+                                                                  (value) {},
+                                                              onChanged:
+                                                                  (value) => {
+                                                                if (value == "")
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckGlucoseVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                                else if (int.parse(textEditingControllerGlucose
+                                                                            .text) >=
+                                                                        40 &&
+                                                                    int.parse(textEditingControllerGlucose
+                                                                            .text) <=
+                                                                        400)
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckGlucoseVisible =
+                                                                          false;
+                                                                    })
+                                                                  }
+                                                                else
+                                                                  {
+                                                                    setState(
+                                                                        () {
+                                                                      BoolCheckGlucoseVisible =
+                                                                          true;
+                                                                    })
+                                                                  }
+                                                              },
+                                                              controller:
+                                                                  textEditingControllerGlucose,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                hintText:
+                                                                    "$Glucose",
+                                                                border:
+                                                                    InputBorder
+                                                                        .none,
+
+                                                                //textEditingControllerAge
+                                                              ),
+                                                              // ค่าอื่น ๆ ของ TextField
+                                                            ),
+                                                          )),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(0, 0, 0, 0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "mg/dL",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Inter',
+                                                          fontSize: 15),
+                                                    )
+                                                  ],
+                                                ),
+                                              )
+                                            ])),
+                                    Visibility(
+                                        visible: BoolCheckGlucoseVisible,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10, 0, 0, 0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "* กรุณาใส่ข้อมูลให้เลขอยู่ในช่วง 40 ถึง 400",
+                                                style: TextStyle(
+                                                    fontFamily: 'Kanit',
+                                                    fontSize: 15,
+                                                    color: Colors.red),
+                                              )
+                                            ],
+                                          ),
+                                        )),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 10),
+                                    )
+                                  ],
+                                ),
+                              )))
+                        ],
+                      )),
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                     child: Row(
@@ -1849,6 +2315,44 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                 fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
                           ),
                           onPressed: () {
+                            if (textEditingControllerBMI.text == "0") {
+                              setState(() {
+                                BoolCheckBMIVisible = true;
+                              });
+                            }
+                            if (textEditingControllerCholesterol.text == "0") {
+                              setState(() {
+                                BoolCheckCholesterolVisible = true;
+                              });
+                            }
+                            if (textEditingControllerDIA.text == "0") {
+                              setState(() {
+                                BoolCheckDIAVisible = true;
+                              });
+                            }
+                            if (textEditingControllerGlucose.text == "0") {
+                              setState(() {
+                                BoolCheckGlucoseVisible = true;
+                              });
+                            }
+                            if (textEditingControllerHR.text == "0") {
+                              setState(() {
+                                BoolCheckHRVisible = true;
+                              });
+                            }
+                            if (textEditingControllerSYS.text == "0") {
+                              setState(() {
+                                BoolCheckSYSVisible = true;
+                              });
+                            }
+                            if (BoolCheckBMIVisible ||
+                                BoolCheckCholesterolVisible ||
+                                BoolCheckDIAVisible ||
+                                BoolCheckGlucoseVisible ||
+                                BoolCheckHRVisible ||
+                                BoolCheckSYSVisible) {
+                              _showAlertDialogsErrorSaveData(context);
+                            }
                             /*เงื่อนไขด้านล่างนี้มีไว้เช็ค ค่า age(อายุ) กับ ค่า textEditingControllerAge(ค่าที่userป้อนมา) ถ้าไม่เท่าให้
                               age = textEditingControllerAge;
                               ** หรือก็คือ ค่าที่userใส่เข้ามาจะไม่เท่ากับของ slider เลยจะต้องมีเงื่อนไขนี้ไว้เพื่ออัพเดทค่าให้ตรงกับที่userใส่มานั้นเอง
@@ -1868,6 +2372,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                               smokeperday = int.parse(
                                   textEditingControllerSmokeperday.text);
                             }
+
                             Cholesterol = double.parse(
                                 textEditingControllerCholesterol.text);
                             SYS = double.parse(textEditingControllerSYS.text);
