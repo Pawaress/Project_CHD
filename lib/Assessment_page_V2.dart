@@ -2352,61 +2352,63 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                 BoolCheckHRVisible ||
                                 BoolCheckSYSVisible) {
                               _showAlertDialogsErrorSaveData(context);
-                            }
-                            /*เงื่อนไขด้านล่างนี้มีไว้เช็ค ค่า age(อายุ) กับ ค่า textEditingControllerAge(ค่าที่userป้อนมา) ถ้าไม่เท่าให้
+                            } else {
+                              /*เงื่อนไขด้านล่างนี้มีไว้เช็ค ค่า age(อายุ) กับ ค่า textEditingControllerAge(ค่าที่userป้อนมา) ถ้าไม่เท่าให้
                               age = textEditingControllerAge;
                               ** หรือก็คือ ค่าที่userใส่เข้ามาจะไม่เท่ากับของ slider เลยจะต้องมีเงื่อนไขนี้ไว้เพื่ออัพเดทค่าให้ตรงกับที่userใส่มานั้นเอง
                             */
-                            if (int.parse(textEditingControllerAge.text) !=
-                                age) {
-                              age = int.parse(textEditingControllerAge.text);
-                            }
+                              if (int.parse(textEditingControllerAge.text) !=
+                                  age) {
+                                age = int.parse(textEditingControllerAge.text);
+                              }
 
-                            /*เงื่อนไขด้านล่างนี้มีไว้เช็ค ค่า age(อายุ) กับ ค่า textEditingControllerAge(ค่าที่userป้อนมา) ถ้าไม่เท่าให้
+                              /*เงื่อนไขด้านล่างนี้มีไว้เช็ค ค่า age(อายุ) กับ ค่า textEditingControllerAge(ค่าที่userป้อนมา) ถ้าไม่เท่าให้
                               age = textEditingControllerAge;
                               ** หรือก็คือ ค่าที่userใส่เข้ามาจะไม่เท่ากับของ slider เลยจะต้องมีเงื่อนไขนี้ไว้เพื่ออัพเดทค่าให้ตรงกับที่userใส่มานั้นเอง
                             */
-                            if (int.parse(
-                                    textEditingControllerSmokeperday.text) !=
-                                smokeperday) {
-                              smokeperday = int.parse(
-                                  textEditingControllerSmokeperday.text);
+                              if (int.parse(
+                                      textEditingControllerSmokeperday.text) !=
+                                  smokeperday) {
+                                smokeperday = int.parse(
+                                    textEditingControllerSmokeperday.text);
+                              }
+
+                              Cholesterol = double.parse(
+                                  textEditingControllerCholesterol.text);
+                              SYS = double.parse(textEditingControllerSYS.text);
+                              DIA = double.parse(textEditingControllerDIA.text);
+                              BMI = double.parse(textEditingControllerBMI.text);
+                              HR = double.parse(textEditingControllerHR.text);
+                              Glucose = double.parse(
+                                  textEditingControllerGlucose.text);
+                              //ค่าที่ print ออกมาคือค่าที่ใช้จริง ด้านล่างค่าจะถูกต้องเมื่อกดปุ่มนี้เพราะมีเงื่อนไขด้านบนมาเช็คตัวแปรบางตัวก่อน
+                              //หรือก็คือสามารถใช้ ค่าที่เป็น $ชื่อตัวแปร ด้านล่างได้เลย ตัวแปรทั้งหมดนี้เป็นแบบ integer
+                              //ส่วนที่ printนี้จะเห็นได้ใน Debug console
+
+                              print("-----------------------");
+                              print("เพศ = $gender");
+                              print('อายุ = $age');
+                              print('ระดับการศึกษา = $EducationLevel');
+                              print('สูบุหรี่ต่อวัน = $smokeperday');
+                              print('ประวัติสูบบุหรี่ =  $smoke');
+                              print(
+                                  'ประวัติการรับยาลดความดัน =  $PressureMedicine');
+                              print(
+                                  'ประวัติการเป็นโรคหลอดเลือดสมอง =  $Stroke');
+                              print(
+                                  'ประวัติการเป็นโรคความดันโลหิต =  $BloodPressure');
+                              print('ประวัติการเป็นโรคเบาหวาน =  $Diabetes');
+                              //หรือก็คือสามารถใช้ ค่าที่เป็น $ชื่อตัวแปร ด้านล่างได้เลย ตัวแปรทั้งหมดนี้เป็นแบบ double
+                              print("-----------------------");
+                              print("คอเลสเตอรอล = $Cholesterol");
+                              print("ค่าความดันตัวบน = $SYS");
+                              print("ค่าความดันตัวล่าง = $DIA");
+                              print("ค่าBMI = $BMI");
+                              print("ค่าอัตราการเต้นหัวใจ = $HR");
+                              print("ค่ากลูโคสในเลือด = $Glucose");
+
+                              print("-----------------------");
                             }
-
-                            Cholesterol = double.parse(
-                                textEditingControllerCholesterol.text);
-                            SYS = double.parse(textEditingControllerSYS.text);
-                            DIA = double.parse(textEditingControllerDIA.text);
-                            BMI = double.parse(textEditingControllerBMI.text);
-                            HR = double.parse(textEditingControllerHR.text);
-                            Glucose =
-                                double.parse(textEditingControllerGlucose.text);
-                            //ค่าที่ print ออกมาคือค่าที่ใช้จริง ด้านล่างค่าจะถูกต้องเมื่อกดปุ่มนี้เพราะมีเงื่อนไขด้านบนมาเช็คตัวแปรบางตัวก่อน
-                            //หรือก็คือสามารถใช้ ค่าที่เป็น $ชื่อตัวแปร ด้านล่างได้เลย ตัวแปรทั้งหมดนี้เป็นแบบ integer
-                            //ส่วนที่ printนี้จะเห็นได้ใน Debug console
-
-                            print("-----------------------");
-                            print("เพศ = $gender");
-                            print('อายุ = $age');
-                            print('ระดับการศึกษา = $EducationLevel');
-                            print('สูบุหรี่ต่อวัน = $smokeperday');
-                            print('ประวัติสูบบุหรี่ =  $smoke');
-                            print(
-                                'ประวัติการรับยาลดความดัน =  $PressureMedicine');
-                            print('ประวัติการเป็นโรคหลอดเลือดสมอง =  $Stroke');
-                            print(
-                                'ประวัติการเป็นโรคความดันโลหิต =  $BloodPressure');
-                            print('ประวัติการเป็นโรคเบาหวาน =  $Diabetes');
-                            //หรือก็คือสามารถใช้ ค่าที่เป็น $ชื่อตัวแปร ด้านล่างได้เลย ตัวแปรทั้งหมดนี้เป็นแบบ double
-                            print("-----------------------");
-                            print("คอเลสเตอรอล = $Cholesterol");
-                            print("ค่าความดันตัวบน = $SYS");
-                            print("ค่าความดันตัวล่าง = $DIA");
-                            print("ค่าBMI = $BMI");
-                            print("ค่าอัตราการเต้นหัวใจ = $HR");
-                            print("ค่ากลูโคสในเลือด = $Glucose");
-
-                            print("-----------------------");
                           },
                           child: Text(
                             'ประเมินความเสี่ยง',
