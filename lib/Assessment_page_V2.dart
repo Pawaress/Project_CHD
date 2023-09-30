@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project_chd/Edit_profile.dart';
 import 'package:toggle_switch/toggle_switch.dart'; //ต้อง
+import 'package:flutter/services.dart';
 
 class A_Pa_V2 extends StatefulWidget {
   @override
@@ -87,8 +88,8 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
 
   //ตัวแปรนี้มีไว้เก็บค่า ระกับการศึกษา จะมี 4 ค่าตามคือ 1 2 3 4 ของ radio ที่เราเลือก สามารถแก้ค่า ทั้ง 4 ได้ในบรรทัดตามลำดับดังนี้ 542 575 608 641
   int EducationLevel = 0;
-  bool BoolCheckSomkingVisible = false;
 
+  bool BoolCheckSomkingVisible = false;
   bool BoolCheckCholesterolVisible = false;
   bool BoolCheckGlucoseVisible = false;
   bool BoolCheckHRVisible = false;
@@ -509,6 +510,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                     keyboardType:
                                                                         TextInputType
                                                                             .number,
+                                                                    inputFormatters: <
+                                                                        TextInputFormatter>[
+                                                                      FilteringTextInputFormatter
+                                                                          .allow(
+                                                                              RegExp(r'[0-9]'))
+                                                                    ],
                                                                     decoration:
                                                                         InputDecoration(
                                                                       hintText:
@@ -850,6 +857,10 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                       smoke = 1;
                                                       print(
                                                           "มีประวัติสูบบุหรี่ = $smoke");
+                                                      setState(() {
+                                                        BoolCheckSomkingVisible =
+                                                            false;
+                                                      });
                                                     } else {
                                                       smoke = 0;
 
@@ -863,6 +874,8 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                           () => smokeperdayslider =
                                                               0, //รับค่าจากslider มาใน agelider
                                                         );
+                                                        BoolCheckSomkingVisible =
+                                                            true;
                                                       });
 
                                                       print(
@@ -911,15 +924,6 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                   value: smokeperdayslider,
                                                   onChanged: (newRating) {
                                                     if (smoke == 0) {
-                                                      //เพิ่มล่าสุดตรงนี้
-
-                                                      setState(() {
-                                                        //รับค่าจาก slider มาใน textEditingController ของ textfleid เพื่อแสดงค่าปัจุบันให้ user เห็น
-
-                                                        BoolCheckSomkingVisible =
-                                                            true;
-                                                      });
-                                                      //จบการเพิ่มล่าสุด
                                                       return null;
                                                     }
                                                     setState(
@@ -959,6 +963,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                         textEditingControllerSmokeperday,
                                                     keyboardType:
                                                         TextInputType.number,
+                                                    inputFormatters: <
+                                                        TextInputFormatter>[
+                                                      FilteringTextInputFormatter
+                                                          .allow(
+                                                              RegExp(r'[0-9]')),
+                                                    ],
                                                     decoration: InputDecoration(
                                                       hintText: "$smokeperday",
                                                       border: InputBorder.none,
@@ -1546,7 +1556,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               },
                                                               onChanged:
                                                                   (value) => {
-                                                                if (value == "")
+                                                                if (value ==
+                                                                        "" ||
+                                                                    value[0] ==
+                                                                        "." ||
+                                                                    value[0] ==
+                                                                        "0")
                                                                   {
                                                                     setState(
                                                                         () {
@@ -1554,11 +1569,11 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                           true;
                                                                     })
                                                                   }
-                                                                else if (int.parse(textEditingControllerCholesterol
+                                                                else if (double.parse(textEditingControllerCholesterol
                                                                             .text) >=
                                                                         100 &&
-                                                                    int.parse(textEditingControllerCholesterol
-                                                                            .text) <=
+                                                                    double.parse(
+                                                                            textEditingControllerCholesterol.text) <=
                                                                         350)
                                                                   {
                                                                     setState(
@@ -1581,6 +1596,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
+                                                              inputFormatters: <
+                                                                  TextInputFormatter>[
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        r'[0-9.]')),
+                                                              ],
                                                               decoration:
                                                                   InputDecoration(
                                                                 hintText:
@@ -1677,7 +1698,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                   (value) {},
                                                               onChanged:
                                                                   (value) => {
-                                                                if (value == "")
+                                                                if (value ==
+                                                                        "" ||
+                                                                    value[0] ==
+                                                                        "." ||
+                                                                    value[0] ==
+                                                                        "0")
                                                                   {
                                                                     setState(
                                                                         () {
@@ -1685,11 +1711,11 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                           true;
                                                                     })
                                                                   }
-                                                                else if (int.parse(textEditingControllerSYS
+                                                                else if (double.parse(textEditingControllerSYS
                                                                             .text) >=
                                                                         80 &&
-                                                                    int.parse(textEditingControllerSYS
-                                                                            .text) <=
+                                                                    double.parse(
+                                                                            textEditingControllerSYS.text) <=
                                                                         300)
                                                                   {
                                                                     setState(
@@ -1712,6 +1738,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
+                                                              inputFormatters: <
+                                                                  TextInputFormatter>[
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        r'[0-9.]')),
+                                                              ],
                                                               decoration:
                                                                   InputDecoration(
                                                                 hintText:
@@ -1808,7 +1840,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                   (value) {},
                                                               onChanged:
                                                                   (value) => {
-                                                                if (value == "")
+                                                                if (value ==
+                                                                        "" ||
+                                                                    value[0] ==
+                                                                        "." ||
+                                                                    value[0] ==
+                                                                        "0")
                                                                   {
                                                                     setState(
                                                                         () {
@@ -1816,11 +1853,11 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                           true;
                                                                     })
                                                                   }
-                                                                else if (int.parse(textEditingControllerDIA
+                                                                else if (double.parse(textEditingControllerDIA
                                                                             .text) >=
                                                                         40 &&
-                                                                    int.parse(textEditingControllerDIA
-                                                                            .text) <=
+                                                                    double.parse(
+                                                                            textEditingControllerDIA.text) <=
                                                                         150)
                                                                   {
                                                                     setState(
@@ -1844,6 +1881,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
+                                                              inputFormatters: <
+                                                                  TextInputFormatter>[
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        r'[0-9.]')),
+                                                              ],
                                                               decoration:
                                                                   InputDecoration(
                                                                 hintText:
@@ -1940,7 +1983,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                   (value) {},
                                                               onChanged:
                                                                   (value) => {
-                                                                if (value == "")
+                                                                if (value ==
+                                                                        "" ||
+                                                                    value[0] ==
+                                                                        "." ||
+                                                                    value[0] ==
+                                                                        "0")
                                                                   {
                                                                     setState(
                                                                         () {
@@ -1948,11 +1996,11 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                           true;
                                                                     })
                                                                   }
-                                                                else if (int.parse(textEditingControllerBMI
+                                                                else if (double.parse(textEditingControllerBMI
                                                                             .text) >=
                                                                         10 &&
-                                                                    int.parse(textEditingControllerBMI
-                                                                            .text) <=
+                                                                    double.parse(
+                                                                            textEditingControllerBMI.text) <=
                                                                         40)
                                                                   {
                                                                     setState(
@@ -1975,6 +2023,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
+                                                              inputFormatters: <
+                                                                  TextInputFormatter>[
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        r'[0-9.]')),
+                                                              ],
                                                               decoration:
                                                                   InputDecoration(
                                                                 hintText:
@@ -2071,7 +2125,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                   (value) {},
                                                               onChanged:
                                                                   (value) => {
-                                                                if (value == "")
+                                                                if (value ==
+                                                                        "" ||
+                                                                    value[0] ==
+                                                                        "." ||
+                                                                    value[0] ==
+                                                                        "0")
                                                                   {
                                                                     setState(
                                                                         () {
@@ -2079,11 +2138,11 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                           true;
                                                                     })
                                                                   }
-                                                                else if (int.parse(textEditingControllerHR
+                                                                else if (double.parse(textEditingControllerHR
                                                                             .text) >=
                                                                         40 &&
-                                                                    int.parse(textEditingControllerHR
-                                                                            .text) <=
+                                                                    double.parse(
+                                                                            textEditingControllerHR.text) <=
                                                                         150)
                                                                   {
                                                                     setState(
@@ -2106,6 +2165,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
+                                                              inputFormatters: <
+                                                                  TextInputFormatter>[
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        r'[0-9.]')),
+                                                              ],
                                                               decoration:
                                                                   InputDecoration(
                                                                 hintText: "$HR",
@@ -2201,7 +2266,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                   (value) {},
                                                               onChanged:
                                                                   (value) => {
-                                                                if (value == "")
+                                                                if (value ==
+                                                                        "" ||
+                                                                    value[0] ==
+                                                                        "." ||
+                                                                    value[0] ==
+                                                                        "0")
                                                                   {
                                                                     setState(
                                                                         () {
@@ -2209,11 +2279,11 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                                           true;
                                                                     })
                                                                   }
-                                                                else if (int.parse(textEditingControllerGlucose
+                                                                else if (double.parse(textEditingControllerGlucose
                                                                             .text) >=
                                                                         40 &&
-                                                                    int.parse(textEditingControllerGlucose
-                                                                            .text) <=
+                                                                    double.parse(
+                                                                            textEditingControllerGlucose.text) <=
                                                                         400)
                                                                   {
                                                                     setState(
@@ -2236,6 +2306,12 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                                               keyboardType:
                                                                   TextInputType
                                                                       .number,
+                                                              inputFormatters: <
+                                                                  TextInputFormatter>[
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        r'[0-9.]')),
+                                                              ],
                                                               decoration:
                                                                   InputDecoration(
                                                                 hintText:
@@ -2345,6 +2421,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                 BoolCheckSYSVisible = true;
                               });
                             }
+                            //แก้เพิ่ม
                             if (BoolCheckBMIVisible ||
                                 BoolCheckCholesterolVisible ||
                                 BoolCheckDIAVisible ||
@@ -2353,6 +2430,7 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
                                 BoolCheckSYSVisible) {
                               _showAlertDialogsErrorSaveData(context);
                             } else {
+                              // ในelse โค้ดอันเก่าครับ
                               /*เงื่อนไขด้านล่างนี้มีไว้เช็ค ค่า age(อายุ) กับ ค่า textEditingControllerAge(ค่าที่userป้อนมา) ถ้าไม่เท่าให้
                               age = textEditingControllerAge;
                               ** หรือก็คือ ค่าที่userใส่เข้ามาจะไม่เท่ากับของ slider เลยจะต้องมีเงื่อนไขนี้ไว้เพื่ออัพเดทค่าให้ตรงกับที่userใส่มานั้นเอง
