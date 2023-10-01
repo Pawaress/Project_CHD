@@ -9,6 +9,7 @@ import 'package:project_chd/Edit_profile_2.dart';
 import 'package:project_chd/Main_page.dart';
 import 'package:project_chd/Sign_In.dart';
 import 'package:project_chd/Sign_Up.dart';
+import 'package:project_chd/User_Manual_page.dart';
 import 'package:project_chd/advice.dart';
 import 'package:project_chd/alert_bad_auth.dart';
 import 'package:project_chd/chatman.dart';
@@ -111,6 +112,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
                   },
                   child: const Text('alert_bad_auth'),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => U_M_Pa(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('User_Manual_page'),
                 ),
               ],
             ),
