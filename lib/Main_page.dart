@@ -170,7 +170,7 @@ class _M_PaState extends State<M_Pa> {
                 ]),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -200,7 +200,7 @@ class _M_PaState extends State<M_Pa> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(12, 7.5, 12, 7.5),
+                                                  .fromSTEB(21, 7.5, 21, 7.5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -317,7 +317,7 @@ class _M_PaState extends State<M_Pa> {
                                                                           5,
                                                                           0),
                                                               child: Text(
-                                                                "คู่มือรบบ",
+                                                                "คู่มือ",
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize: 13,
