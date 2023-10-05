@@ -200,7 +200,7 @@ class _M_PaState extends State<M_Pa> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(21, 7.5, 21, 7.5),
+                                                  .fromSTEB(27, 7.5, 27, 7.5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -286,7 +286,7 @@ class _M_PaState extends State<M_Pa> {
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(7, 5, 7, 5),
+                                                  .fromSTEB(4, 5, 4, 5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -295,7 +295,7 @@ class _M_PaState extends State<M_Pa> {
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
-                                                                5, 2.5, 5, 2.5),
+                                                                3, 2.5, 3, 2.5),
                                                     child: Column(
                                                       children: [
                                                         Row(
