@@ -196,12 +196,11 @@ class _M_PaState extends State<M_Pa> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(25),
                                       child: Card(
-                                        color: Color(0xFFEBA37A),
                                         child: Column(
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6, 7.5, 6, 7.5),
+                                                  .fromSTEB(12, 7.5, 12, 7.5),
                                               child: Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
@@ -283,7 +282,6 @@ class _M_PaState extends State<M_Pa> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(25),
                                       child: Card(
-                                        color: Color(0xFFEBA37A),
                                         child: Column(
                                           children: [
                                             Padding(
@@ -319,7 +317,7 @@ class _M_PaState extends State<M_Pa> {
                                                                           5,
                                                                           0),
                                                               child: Text(
-                                                                "คู่มือระบบ",
+                                                                "คู่มือรบบ",
                                                                 style:
                                                                     TextStyle(
                                                                   fontSize: 13,
