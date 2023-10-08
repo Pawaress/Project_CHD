@@ -18,7 +18,7 @@ class M_Pa extends StatefulWidget {
 class _M_PaState extends State<M_Pa> {
   @override
   Widget build(BuildContext context) {
-    String textss = "ตํ่า"; //แมน ส่งค่ามาให้ตัวนี้นะ
+    String textss = "สูง"; //แมน ส่งค่ามาให้ตัวนี้นะ
 
     return Scaffold(
       appBar: AppBar(
@@ -165,7 +165,10 @@ class _M_PaState extends State<M_Pa> {
                                                 style: TextStyle(
                                                     height: 0.95,
                                                     color: Color(0XFFFF8888),
-                                                    fontSize: 65,
+                                                    fontSize:
+                                                        textss == "ปานกลาง"
+                                                            ? 40
+                                                            : 65,
                                                     fontFamily: 'kanit'),
                                               )
                                             ],
