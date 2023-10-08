@@ -18,7 +18,7 @@ class M_Pa extends StatefulWidget {
 class _M_PaState extends State<M_Pa> {
   @override
   Widget build(BuildContext context) {
-    String textss = "สูง"; //แมน ส่งค่ามาให้ตัวนี้นะ
+    String textss = "ปานกลาง"; //แมน ส่งค่ามาให้ตัวนี้นะ
 
     return Scaffold(
       appBar: AppBar(
