@@ -18,6 +18,8 @@ class M_Pa extends StatefulWidget {
 class _M_PaState extends State<M_Pa> {
   @override
   Widget build(BuildContext context) {
+    String textss = "ตํ่า"; //แมน ส่งค่ามาให้ตัวนี้นะ
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -56,8 +58,8 @@ class _M_PaState extends State<M_Pa> {
                       child: Column(
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(10, 20, 10, 20),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10, 15, 10, textss == "ตํ่า" ? 5 : 15),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.max,
@@ -66,6 +68,8 @@ class _M_PaState extends State<M_Pa> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10, 0, 0, 0),
                                   child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -133,31 +137,42 @@ class _M_PaState extends State<M_Pa> {
                                       child: Column(
                                         children: [
                                           Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                "ความเสี่ยง",
-                                                style: TextStyle(
-                                                    height: 1,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontFamily: 'kanit'),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0,
+                                                        0,
+                                                        5,
+                                                        textss == "ตํ่า"
+                                                            ? 20
+                                                            : 0),
+                                                child: Text(
+                                                  "ระดับความเสี่ยง",
+                                                  style: TextStyle(
+                                                      height: 1,
+                                                      fontSize: 20,
+                                                      fontFamily: 'kanit'),
+                                                ),
                                               ),
+                                              Text(
+                                                textss, //ใส่ต่าตวามเสี่ยงตรงนี้(ต้องเป็น stringนะ)
+
+                                                style: TextStyle(
+                                                    height: 0.95,
+                                                    color: Color(0XFFFF8888),
+                                                    fontSize: 65,
+                                                    fontFamily: 'kanit'),
+                                              )
                                             ],
                                           ),
                                         ],
                                       ),
                                     ),
-                                    Text(
-                                      "40%", //ใส่ต่าตวามเสี่ยงตรงนี้(ต้องเป็น stringนะ)
-
-                                      style: TextStyle(
-                                          height: 1,
-                                          color: Color(0XFFFF8888),
-                                          fontSize: 70,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Inter'),
-                                    )
                                   ],
                                 ),
                               ],

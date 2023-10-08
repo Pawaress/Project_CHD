@@ -15,6 +15,7 @@ import 'package:project_chd/alert_bad_auth.dart';
 import 'package:project_chd/chatman.dart';
 import 'package:project_chd/result.dart';
 import 'package:project_chd/test.dart';
+import 'package:project_chd/test_Page.dart';
 import 'Before_assessment_page.dart';
 
 void main() {
@@ -98,6 +99,23 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
           child: Column(children: [
             Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => T_Pa(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('text_page'),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
