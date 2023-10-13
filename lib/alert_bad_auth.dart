@@ -49,21 +49,42 @@ class A_B_AState extends State<A_B_A> {
                     ],
                   )),
               content: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 45),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Wrap(
-                      children: <Widget>[
-                        Text(
-                          'The email address is badly formated There is no user record.', //ส่วนของ ข้อความ เนื้อหาต่อจาก title
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 16,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFD9D9D9),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  35, 10, 35, 10),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    20), // กำหนดความโค้งของมุมปุ่ม
+                              ),
+
+                              textStyle: TextStyle(
+                                  fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                            },
+                            child: Text(
+                              'back',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Kanit',
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -76,38 +97,6 @@ class A_B_AState extends State<A_B_A> {
 
               //elevation: 24,
               //backgroundColor: Colors.blue,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFD9D9D9),
-                      padding: EdgeInsetsDirectional.fromSTEB(35, 10, 35, 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            20), // กำหนดความโค้งของมุมปุ่ม
-                      ),
-
-                      textStyle:
-                          TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
-                    },
-                    child: Text(
-                      'back',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Kanit',
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ));
@@ -325,6 +314,116 @@ class A_B_AState extends State<A_B_A> {
     );
   }
 
+  void _showAlertDialogExit(BuildContext context) {
+    //ฟังก์ชันแสดงตัวAlert
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return (Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AlertDialog(
+              backgroundColor: Color(0XFFD9D9D9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              titlePadding: const EdgeInsets.all(0),
+
+              content: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "ต้องการออกจากระบบใช่หรือไม่",
+                            style: TextStyle(fontFamily: 'Kanit', fontSize: 18),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFEBA37A),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(35, 8, 35, 8),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    15), // กำหนดความโค้งของมุมปุ่ม
+                              ),
+
+                              textStyle: TextStyle(
+                                  fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                            },
+                            child: Text(
+                              'ไม่',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontFamily: 'Kanit',
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFFFF0000),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(35, 8, 35, 8),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    15), // กำหนดความโค้งของมุมปุ่ม
+                              ),
+
+                              textStyle: TextStyle(
+                                  fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                            },
+                            child: Text(
+                              'ใช่',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontFamily: 'Kanit',
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              /*actions: [
+            TextButton(onPressed: () {}, child: Text("yes")),
+            TextButton(onPressed: () {}, child: Text("no"))
+          ],*/
+
+              //elevation: 24,
+              //backgroundColor: Colors.blue,
+            ),
+          ],
+        ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -366,7 +465,7 @@ class A_B_AState extends State<A_B_A> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                   child: ElevatedButton(
                     onPressed: () {
-                      _showAlertDialog(
+                      _showAlertDialogExit(
                           context); //ส่วนในการเรียกฟังก์ชันที่ ไว้สำหรับแสดง Alert
                     },
                     child: Text("ปุ่มกดแล้วเด้ง Aert ทันที"),
