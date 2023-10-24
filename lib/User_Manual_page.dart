@@ -76,14 +76,29 @@ class U_M_PaState extends State<U_M_Pa> {
                                               MainAxisAlignment.center,
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              "คู่มือการใช้งาน",
-                                              style: TextStyle(
-                                                fontFamily: 'Kanit',
-                                                fontSize: 20,
+                                            Expanded(
+                                              child: Text(
+                                                "คู่มือการใช้งาน",
+                                                style: TextStyle(
+                                                  fontFamily: 'Kanit',
+                                                  fontSize: 20,
+                                                ),
+                                                textAlign: TextAlign
+                                                    .center, // จัดวางตรงกลางในแนวนอน
+                                                // จัดวางตรงกลางในแนวตั้ง
                                               ),
                                             )
                                           ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 0, 10, 10),
+                                        child: Image.asset(
+                                          'images/manualCHD.png',
+                                          // ระบุเส้นทางของไอคอนภาพ
+                                          width: 400, // กำหนดความกว้างของไอคอน
+                                          height: 200, // กำหนดความสูงของไอคอน
                                         ),
                                       ),
                                       Padding(

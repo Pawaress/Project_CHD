@@ -139,6 +139,90 @@ class _testState extends State<test> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 10),
+              child: Column(
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Card(
+                      color: Color(0xFF4FCCBD),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.all(5),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 4, 0),
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Card(
+                                          child: Image.asset(
+                                            'images/HRing.png',
+                                            // ระบุเส้นทางของไอคอนภาพ
+                                            width: 50, // กำหนดความกว้างของไอคอน
+                                            height: 50, // กำหนดความสูงของไอคอน
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text("data"),
+                                      LayoutBuilder(
+                                        builder: (BuildContext context,
+                                            BoxConstraints constraints) {
+                                          final screenWidth =
+                                              MediaQuery.of(context).size.width;
+                                          final targetWidth = screenWidth *
+                                              0.4; // กำหนดเป็น 70% ของความกว้างจอจริง
+                                          final maxWidth =
+                                              targetWidth > constraints.maxWidth
+                                                  ? constraints.maxWidth
+                                                  : targetWidth;
+
+                                          return Wrap(
+                                            children: [
+                                              Container(
+                                                constraints: BoxConstraints(
+                                                    maxWidth: maxWidth),
+                                                child: Text(
+                                                  'Lorem ipsum dolor sit amet,piscing elit. Sed ac lobortis libero, in condimentum mauridddddddddddddds.',
+                                                  style:
+                                                      TextStyle(fontSize: 16),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Column(
               children: [
                 Text("data"),
@@ -260,7 +344,7 @@ class _testState extends State<test> {
                         Container(
                           constraints: BoxConstraints(maxWidth: maxWidth),
                           child: Text(
-                            'Lorem ipsum dolor sit amet,piscing elit. Sed ac lobortis libero, in condimentum mauris.',
+                            'Lorem ipsum dolor sit amet,piscing elit. Sed ac lobortis libero, in condimentum mauridddddddddddddds.',
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
