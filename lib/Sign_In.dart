@@ -510,41 +510,6 @@ class _S_InState extends State<S_In> {
                                             ],
                                           ),
                                         ),
-                                        Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10, 20, 10, 0),
-                                            child: Container(
-                                                color: Color(0xFFD9D9D9),
-                                                child: Padding(
-                                                  padding:
-                                                      EdgeInsetsDirectional.all(
-                                                          30),
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            "เผื่อมีพวก API login มาใช้",
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    'Kanit',
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontSize: 15),
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ),
-                                                )))
                                       ],
                                     ),
                                   )),

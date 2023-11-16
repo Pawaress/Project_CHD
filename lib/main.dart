@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:project_chd/Assessment_page.dart';
 import 'package:project_chd/Assessment_page_V2.dart';
 import 'package:project_chd/Before_chatbot_page.dart';
+import 'package:project_chd/Bmi_Page.dart';
 import 'package:project_chd/Call_1669_page.dart';
 import 'package:project_chd/Chat_bot_page.dart';
 import 'package:project_chd/Edit_profile.dart';
 import 'package:project_chd/Edit_profile_2.dart';
 import 'package:project_chd/Main_page.dart';
+import 'package:project_chd/Main_page_V2.dart';
 import 'package:project_chd/Sign_In.dart';
+import 'package:project_chd/Sign_In_V2.dart';
 import 'package:project_chd/Sign_Up.dart';
+import 'package:project_chd/Sign_Up_V2.dart';
 import 'package:project_chd/User_Manual_page.dart';
 import 'package:project_chd/advice.dart';
 import 'package:project_chd/alert_bad_auth.dart';
@@ -99,6 +103,74 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0),
           child: Column(children: [
             Padding(padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Bmi_p(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('Bmi_p'),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => M_Pa_V2(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('M_Pa_V2'),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => S_In_V2(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('Sign_In_V2'),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => S_Up_V2(),
+                      ),
+                    );
+                    // รหัสที่ต้องการให้ทำเมื่อปุ่มถูกแตะหรือกด
+                  },
+                  child: const Text('Sign_Up_V2'),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -215,6 +215,109 @@ class _A_Pa_V2State extends State<A_Pa_V2> {
     );
   }
 
+  void _showAlertDialogsResultData(BuildContext context) {
+    //ฟังก์ชันแสดงตัวAlert
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return (Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AlertDialog(
+              backgroundColor: Color(0XFFD9D9D9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              titlePadding: const EdgeInsets.all(0),
+              title: Container(
+                  padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "ผลการคำนวณ (BMI)", //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                        style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 17,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              content: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Wrap(
+                      children: <Widget>[
+                        Text(
+                          "กรุณากรอกข้อมูลให้เรียบร้อยและตรงตามเงื่อนไข",
+                          textAlign: TextAlign
+                              .center, //ส่วนของ ข้อความ title ที่พิ้นหลังสีแดงๆ
+                          style: TextStyle(
+                              fontFamily: 'kanit',
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              /*actions: [
+            TextButton(onPressed: () {}, child: Text("yes")),
+            TextButton(onPressed: () {}, child: Text("no"))
+          ],*/
+
+              //elevation: 24,
+              //backgroundColor: Colors.blue,
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFD9D9D9),
+                      padding: EdgeInsetsDirectional.fromSTEB(35, 10, 35, 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            20), // กำหนดความโค้งของมุมปุ่ม
+                      ),
+
+                      textStyle:
+                          TextStyle(fontSize: 15), // เปลี่ยนสีปุ่มเป็นสีแดง
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      // เอาไว้ลิ้งไปหน้าอื่นอันนี้จะเป็นแบบย้อนกลับไปหน้าก่อนหน้านี้
+                    },
+                    child: Text(
+                      'OK',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
