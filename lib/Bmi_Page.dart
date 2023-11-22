@@ -244,7 +244,20 @@ class _Bmi_pState extends State<Bmi_p> {
                     Wrap(
                       children: <Widget>[
                         Text(
-                          "ผลการคำนวณค่าดัชนีมวลกายของคุณคือ $bmi และ ระดับ BMI ของคุณอยูในระดับ $textBMI",
+                          "ผลการคำนวณค่าดัชนีมวลกายของคุณคือ $bmi ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Wrap(
+                      children: <Widget>[
+                        Text(
+                          "ระดับของ bmi ของคุณคือ $textBMI",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'kanit',
